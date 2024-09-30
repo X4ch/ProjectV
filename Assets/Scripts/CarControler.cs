@@ -1,34 +1,104 @@
 using UnityEngine;
-using System.Collections;
-using static UnityEngine.RuleTile.TilingRuleOutput;
-using System;
-
 using UnityEngine.InputSystem;
 
-public class CarController: MonoBehaviour {
+public class CarController : MonoBehaviour
+{
+    private Rigidbody2D carRigidbody2D;
 
-    [SerializeField] float maxSpeed;
-    [SerializeField] float speed;
-    Vector2 direction;
-    [SerializeField] Rigidbody2D rb;
+    private float steeringInput;
+    private float accelerationInput;
 
-    private void OnForward()
+    [Header("Car Settings")]
+    public float driftFactor = 0.9f;
+    public float accelerationFactor = 15.0f;
+    public float turnFactor = 3.5f;
+    public float maxSpeed = 20f;
+    public float dragFactor = 3.0f;
+    public float backwardSpeedFactor = 0.5f;
+
+    private float velocityVsUp;
+    private float rotationAngle;
+
+
+    private void Awake()
     {
-        speed = maxSpeed;
+        carRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    private void OnBackward()
+    private void OnEnable()
     {
-        speed = -maxSpeed;
+        var carInput = new CarInput();
+        carInput.Car.Enable();
+
+        carInput.Car.Steering.performed += context => steeringInput = context.ReadValue<float>();
+        carInput.Car.Steering.canceled += context => steeringInput = 0f;
+
+        carInput.Car.Engine.performed += context => accelerationInput = context.ReadValue<float>();
+        carInput.Car.Engine.canceled += context => accelerationInput = 0f;
     }
 
-    private void OnSteering(InputAction.CallbackContext context)
+    private void FixedUpdate()
     {
-        direction = context.ReadValue<Vector2>();
+        ApplyEngineForce();
+        KillOrthogonalVelocity();
+        ApplySteering();
     }
 
-    private void Update()
+    private void ApplyEngineForce()
     {
-        rb.position += direction * speed;
+        velocityVsUp = Vector2.Dot(transform.up, carRigidbody2D.velocity);
+
+        // Clamping the speed
+        if (accelerationInput > 0 && velocityVsUp > maxSpeed)
+            return;
+        if (accelerationInput < 0 && velocityVsUp < -maxSpeed * backwardSpeedFactor) 
+            return;
+        if (accelerationInput > 0 && carRigidbody2D.velocity.sqrMagnitude > maxSpeed * maxSpeed)
+            return;
+
+        // Apply drag if there is no acceleration input, so the car slows down when not accelerating
+        if (Mathf.Abs(accelerationInput) < Mathf.Epsilon)
+        {
+            carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, dragFactor, Time.fixedDeltaTime * dragFactor);
+        }
+        else
+        {
+            carRigidbody2D.drag = 0f; // No drag when there's acceleration input
+        }
+
+        // Create a force for the engine based on acceleration input
+        Vector2 engineForceVector = transform.up * accelerationInput * accelerationFactor;
+
+        // Apply the force to push the car forward or backward
+        carRigidbody2D.AddForce(engineForceVector, ForceMode2D.Force);
+    }
+
+    private void ApplySteering()
+    {
+        // Limit the car's ability to turn when moving slowly
+        float minSpeedBeforeAllowTurningFactor = (carRigidbody2D.velocity.magnitude / 8f);  //Calculate differently
+        minSpeedBeforeAllowTurningFactor = Mathf.Clamp01(minSpeedBeforeAllowTurningFactor);
+
+        // Update the rotation angle based on input
+        rotationAngle -= steeringInput * turnFactor * minSpeedBeforeAllowTurningFactor;
+
+        // Apply steering by rotating the car object
+        carRigidbody2D.MoveRotation(rotationAngle);
+    }
+
+    private void KillOrthogonalVelocity() // Changing parameters to see the effect exactly
+    {
+        // Get the forward and right directions of the car
+        Vector2 forwardVelocity = transform.up * Vector2.Dot(carRigidbody2D.velocity, transform.up);
+        Vector2 rightVelocity = transform.right * Vector2.Dot(carRigidbody2D.velocity, transform.right);
+
+        // Kill the orthogonal (sideways) velocity to avoid sliding
+        carRigidbody2D.velocity = forwardVelocity + rightVelocity * 0.2f;
+    }
+
+    private void OnDisable()
+    {
+        var carInput = new CarInput();
+        carInput.Car.Disable();
     }
 }
