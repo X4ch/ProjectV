@@ -15,6 +15,6 @@ public class Start : MonoBehaviour
 
     private void OnTriggerEnter2D()
     {
-        trackManager.GetComponent<TrackManager>().crossStartLine();
+        trackManager.GetComponent<TrackManager>().crossEndLine();
     }
 }

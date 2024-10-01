@@ -12,6 +12,9 @@ public class TrackManager : MonoBehaviour
     [SerializeField] GameObject startLine;
     private BoxCollider2D startLineCollider;
 
+    [SerializeField] GameObject endLine;
+    private BoxCollider2D endLineCollider;
+
     [SerializeField] GameObject carPrefab;
     private GameObject car;
 
@@ -30,22 +33,33 @@ public class TrackManager : MonoBehaviour
         collider.enabled = false;
     }
 
-    public void crossStartLine()
+    public void crossEndLine()
     {
-        Debug.Log("Lap finished");
-
-        lapCounter++;
-        numberOfCheckpointCrossed = 0;
-        startLineCollider.enabled = false;
-
-        if (lapCounter == numberOfLap)
+        if (isMultiLap)
         {
-            EndTrack();
+            Debug.Log("Lap finished");
+
+            lapCounter++;
+            numberOfCheckpointCrossed = 0;
+            endLineCollider.enabled = false;
+
+            if (lapCounter == numberOfLap)
+            {
+                EndTrack();
+            }
+            else
+            {
+                reanableCheckpoints();
+            }
         }
+
         else
         {
-            reanableCheckpoints();
+            Debug.Log("Track ended");
+
+            EndTrack();
         }
+        
     }
 
     private void reanableCheckpoints()
@@ -57,10 +71,10 @@ public class TrackManager : MonoBehaviour
     }
     private void EndTrack()
     {
-        // TO DO : implement logic when a track is done
-
         Debug.Log("Track finished");
         car.SetActive(false);
+
+        // TO DO : implement logic when a track is done
     }
 
     // Start is called before the first frame update
@@ -70,6 +84,9 @@ public class TrackManager : MonoBehaviour
         car = Instantiate(carPrefab, startLine.transform.position, Quaternion.identity);
         startLineCollider = startLine.GetComponent<BoxCollider2D>();
         startLineCollider.enabled = false;
+
+        endLineCollider = endLine.GetComponent<BoxCollider2D>();
+        endLineCollider.enabled = false;
     }
 
     // Update is called once per frame
@@ -79,7 +96,7 @@ public class TrackManager : MonoBehaviour
 
         if (numberOfCheckpointCrossed == numberOfCheckpoints) 
         {
-            startLineCollider.enabled = true;
+            endLineCollider.enabled = true;
         }
     }
 }
