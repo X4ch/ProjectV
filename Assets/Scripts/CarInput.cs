@@ -44,6 +44,15 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Respawn"",
+                    ""type"": ""Button"",
+                    ""id"": ""347b25a4-cbe6-4b73-9cb6-c26811712b83"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -266,6 +275,28 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""action"": ""Engine"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e05142e3-9406-4ca0-95b0-54ccc2350579"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""655fdd88-4909-419d-8e0e-6cefdfe14339"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -276,6 +307,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
         m_Car_Steering = m_Car.FindAction("Steering", throwIfNotFound: true);
         m_Car_Engine = m_Car.FindAction("Engine", throwIfNotFound: true);
+        m_Car_Respawn = m_Car.FindAction("Respawn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -339,12 +371,14 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
     private List<ICarActions> m_CarActionsCallbackInterfaces = new List<ICarActions>();
     private readonly InputAction m_Car_Steering;
     private readonly InputAction m_Car_Engine;
+    private readonly InputAction m_Car_Respawn;
     public struct CarActions
     {
         private @CarInput m_Wrapper;
         public CarActions(@CarInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Steering => m_Wrapper.m_Car_Steering;
         public InputAction @Engine => m_Wrapper.m_Car_Engine;
+        public InputAction @Respawn => m_Wrapper.m_Car_Respawn;
         public InputActionMap Get() { return m_Wrapper.m_Car; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -360,6 +394,9 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
             @Engine.started += instance.OnEngine;
             @Engine.performed += instance.OnEngine;
             @Engine.canceled += instance.OnEngine;
+            @Respawn.started += instance.OnRespawn;
+            @Respawn.performed += instance.OnRespawn;
+            @Respawn.canceled += instance.OnRespawn;
         }
 
         private void UnregisterCallbacks(ICarActions instance)
@@ -370,6 +407,9 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
             @Engine.started -= instance.OnEngine;
             @Engine.performed -= instance.OnEngine;
             @Engine.canceled -= instance.OnEngine;
+            @Respawn.started -= instance.OnRespawn;
+            @Respawn.performed -= instance.OnRespawn;
+            @Respawn.canceled -= instance.OnRespawn;
         }
 
         public void RemoveCallbacks(ICarActions instance)
@@ -391,5 +431,6 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
     {
         void OnSteering(InputAction.CallbackContext context);
         void OnEngine(InputAction.CallbackContext context);
+        void OnRespawn(InputAction.CallbackContext context);
     }
 }

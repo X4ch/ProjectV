@@ -10,7 +10,6 @@ public class TrackManager : MonoBehaviour
     private int lapCounter;
 
     [SerializeField] GameObject startLine;
-    private BoxCollider2D startLineCollider;
 
     [SerializeField] GameObject endLine;
     private BoxCollider2D endLineCollider;
@@ -24,13 +23,16 @@ public class TrackManager : MonoBehaviour
     [SerializeField] private int numberOfCheckpointCrossed;
     private int numberOfCheckpoints;
     [SerializeField] List<GameObject> checkpoints;
+    private Vector2 respawnPoint;
 
-    public void crossCheckpoint(BoxCollider2D collider)
+    public void crossCheckpoint(Checkpoint checkpoint)
     {
         Debug.Log("Checkpoint crossed");
 
         numberOfCheckpointCrossed++;
-        collider.enabled = false;
+        checkpoint.GetComponent<BoxCollider2D>().enabled = false;
+
+        respawnPoint = checkpoint.transform.position;
     }
 
     public void crossEndLine()
@@ -42,6 +44,8 @@ public class TrackManager : MonoBehaviour
             lapCounter++;
             numberOfCheckpointCrossed = 0;
             endLineCollider.enabled = false;
+
+            respawnPoint = endLine.transform.position;
 
             if (lapCounter == numberOfLap)
             {
@@ -77,16 +81,26 @@ public class TrackManager : MonoBehaviour
         // TO DO : implement logic when a track is done
     }
 
+    public void onRespawn()
+    {
+        Destroy(car);
+        car = Instantiate(carPrefab, respawnPoint, Quaternion.identity);
+    }
+
+ 
+
     // Start is called before the first frame update
     void Start()
     {
         numberOfCheckpoints = checkpoints.Count;
         car = Instantiate(carPrefab, startLine.transform.position, Quaternion.identity);
-        startLineCollider = startLine.GetComponent<BoxCollider2D>();
-        startLineCollider.enabled = false;
+
+        // TO DO : change car rotation
 
         endLineCollider = endLine.GetComponent<BoxCollider2D>();
         endLineCollider.enabled = false;
+
+        respawnPoint = startLine.transform.position;
     }
 
     // Update is called once per frame

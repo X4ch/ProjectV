@@ -20,6 +20,16 @@ public class CarController : MonoBehaviour
     private float rotationAngle;
 
 
+    public void setVelocity(float value)
+    {
+        velocityVsUp = value;
+    }
+
+    public void setAngle(float angle)
+    {
+        rotationAngle = angle;
+    }
+
     private void Awake()
     {
         carRigidbody2D = GetComponent<Rigidbody2D>();
