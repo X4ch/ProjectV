@@ -59,6 +59,17 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": """",
+                    ""id"": ""b7c002ca-b976-4078-8deb-cb5ee206840f"",
+                    ""path"": ""<Gamepad>/dpad/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steering"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""Keyboard arrows"",
                     ""id"": ""3db30a4f-c9b4-451e-aedb-e280fd527533"",
                     ""path"": ""1DAxis"",
