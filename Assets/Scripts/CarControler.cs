@@ -93,7 +93,7 @@ public class CarController : MonoBehaviour
         Vector2 rightVelocity = transform.right * Vector2.Dot(carRigidbody2D.velocity, transform.right);
 
         // Kill the orthogonal (sideways) velocity to avoid sliding
-        carRigidbody2D.velocity = forwardVelocity + rightVelocity * 0.2f;
+        carRigidbody2D.velocity = forwardVelocity + rightVelocity * driftFactor;
     }
 
     private void OnDisable()

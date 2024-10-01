@@ -125,7 +125,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Gamepad"",
+                    ""name"": ""Gamepad shoulder"",
                     ""id"": ""1f3cc9dc-0a02-49c0-ad3d-69894f3e0824"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
@@ -216,6 +216,39 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""name"": ""positive"",
                     ""id"": ""f940309b-2ddd-4c4b-bdff-237a0baa36a2"",
                     ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Engine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepade trigger"",
+                    ""id"": ""9316a65e-3110-4bc2-842b-7fc5f830579f"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Engine"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""f3879fa0-1f9b-426c-ac0b-7def3c579eb5"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Engine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""54cc655c-0e7b-4fb9-a13c-0de30d79add5"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
