@@ -338,13 +338,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133105945}
   serializedVersion: 2
-  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: -39.264828, y: 5.026057, z: -0.04028872}
   m_LocalScale: {x: 19.336983, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1137717424}
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!114 &1133105949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: 1255233298}
   - component: {fileID: 1255233297}
   m_Layer: 0
-  m_Name: Checkpoint 2
+  m_Name: Checkpoint 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -531,13 +531,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255233296}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.77959794, w: 0.62628037}
+  m_LocalRotation: {x: -0, y: -0, z: -0.77483183, w: 0.6321674}
   m_LocalPosition: {x: 6.3281, y: -16.2789, z: -0.04028872}
   m_LocalScale: {x: 10.12733, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1137717424}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -102.448}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -101.58}
 --- !u!1 &1293881137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,8 +1263,8 @@ MonoBehaviour:
   carPrefab: {fileID: 1228123914914350077, guid: 30e0f4fd779066642ac51fd01c900a09, type: 3}
   numberOfCheckpointCrossed: 0
   checkpoints:
-  - {fileID: 1847378654}
   - {fileID: 1255233296}
+  - {fileID: 1847378654}
 --- !u!4 &1397163161
 Transform:
   m_ObjectHideFlags: 0
@@ -2035,7 +2035,7 @@ GameObject:
   - component: {fileID: 1847378657}
   - component: {fileID: 1847378656}
   m_Layer: 0
-  m_Name: Checkpoint 1
+  m_Name: Checkpoint 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2049,13 +2049,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847378654}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 29.013569, y: 8.746057, z: -0.04028872}
-  m_LocalScale: {x: 14.450898, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.40747488, w: 0.9132164}
+  m_LocalPosition: {x: 33.1082, y: 32.7033, z: -0.04028872}
+  m_LocalScale: {x: 19.565071, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1137717424}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 48.093}
 --- !u!114 &1847378656
 MonoBehaviour:
   m_ObjectHideFlags: 0

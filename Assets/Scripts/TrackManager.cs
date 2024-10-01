@@ -23,7 +23,8 @@ public class TrackManager : MonoBehaviour
     [SerializeField] private int numberOfCheckpointCrossed;
     private int numberOfCheckpoints;
     [SerializeField] List<GameObject> checkpoints;
-    private Vector2 respawnPoint;
+
+    private GameObject currentCheckPoint;
 
     public void crossCheckpoint(Checkpoint checkpoint)
     {
@@ -32,7 +33,7 @@ public class TrackManager : MonoBehaviour
         numberOfCheckpointCrossed++;
         checkpoint.GetComponent<BoxCollider2D>().enabled = false;
 
-        respawnPoint = checkpoint.transform.position;
+        currentCheckPoint = checkpoints[numberOfCheckpointCrossed-1];
     }
 
     public void crossEndLine()
@@ -45,7 +46,7 @@ public class TrackManager : MonoBehaviour
             numberOfCheckpointCrossed = 0;
             endLineCollider.enabled = false;
 
-            respawnPoint = endLine.transform.position;
+            currentCheckPoint = endLine;
 
             if (lapCounter == numberOfLap)
             {
@@ -84,7 +85,8 @@ public class TrackManager : MonoBehaviour
     public void onRespawn()
     {
         Destroy(car);
-        car = Instantiate(carPrefab, respawnPoint, Quaternion.identity);
+        car = Instantiate(carPrefab, currentCheckPoint.transform.position, currentCheckPoint.transform.rotation);
+        //car.GetComponent<Rigidbody2D>().MoveRotation(currentCheckPoint.transform.rotation);
     }
 
  
@@ -93,14 +95,14 @@ public class TrackManager : MonoBehaviour
     void Start()
     {
         numberOfCheckpoints = checkpoints.Count;
-        car = Instantiate(carPrefab, startLine.transform.position, Quaternion.identity);
+        car = Instantiate(carPrefab, startLine.transform.position, startLine.transform.rotation);
 
         // TO DO : change car rotation
 
         endLineCollider = endLine.GetComponent<BoxCollider2D>();
         endLineCollider.enabled = false;
 
-        respawnPoint = startLine.transform.position;
+        currentCheckPoint = startLine;
     }
 
     // Update is called once per frame

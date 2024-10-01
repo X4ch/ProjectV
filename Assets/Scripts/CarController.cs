@@ -35,6 +35,11 @@ public class CarController : MonoBehaviour
         carRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        rotationAngle = transform.rotation.eulerAngles.z;
+    }
+
     private void OnEnable()
     {
         var carInput = new CarInput();
