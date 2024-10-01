@@ -1250,6 +1250,7 @@ MonoBehaviour:
   isMultiLap: 1
   numberOfLap: 5
   startLine: {fileID: 1829077618}
+  endLine: {fileID: 1829077618}
   carPrefab: {fileID: 1228123914914350077, guid: 30e0f4fd779066642ac51fd01c900a09, type: 3}
   numberOfCheckpointCrossed: 0
   checkpoints:
