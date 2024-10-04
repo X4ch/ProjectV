@@ -6,22 +6,16 @@ using UnityEngine;
 public class Teleporter : MonoBehaviour
 {
 
-    [SerializeField] GameObject exitPortal; 
-
-    void Start()
-    {
-        Color parentColour = GetComponentsInParent<Renderer>()[1].material.color;
-        GetComponent<Renderer>().material.color = parentColour;
-    }
+    [SerializeField] GameObject exitPortal;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Tp collided");
-
-        if (collision.GetComponent<CarController>() != null)
+        CarController car = collision.GetComponent<CarController>();
+        if (car != null && car.canTeleport)
         {
             collision.transform.position = exitPortal.transform.position;
+            car.setTeleportationTime(0);
+            car.canTeleport = false;
         }
     }
-
 }
