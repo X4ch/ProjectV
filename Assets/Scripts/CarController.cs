@@ -30,15 +30,11 @@ public class CarController : MonoBehaviour
     private float rotationAngle;
 
 
-    public void setVelocity(float value)
+    public float getVelocity()
     {
-        velocityVsUp = value;
+        return velocityVsUp;
     }
 
-    public void setAngle(float angle)
-    {
-        rotationAngle = angle;
-    }
 
     private void Awake()
     {
@@ -70,7 +66,6 @@ public class CarController : MonoBehaviour
         ApplySteering();
 
         lastTeleportTime += Time.deltaTime;
-        Debug.Log(lastTeleportTime);
 
         if (lastTeleportTime >= teleportationCooldownInSeconds)
         {
