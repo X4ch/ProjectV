@@ -35,6 +35,21 @@ public class CarController : MonoBehaviour
         return velocityVsUp;
     }
 
+    public void setVelocity(float velocity)
+    {
+        velocityVsUp = velocity;
+    }
+
+    public float getRotation()
+    {
+        return rotationAngle;
+    }
+
+    public void setRotation(float rotation)
+    {
+        rotationAngle = rotation;
+    }
+
 
     private void Awake()
     {
@@ -57,6 +72,16 @@ public class CarController : MonoBehaviour
 
         carInput.Car.Engine.performed += context => accelerationInput = context.ReadValue<float>();
         carInput.Car.Engine.canceled += context => accelerationInput = 0f;
+    }
+
+    public void setAccelerationInput(float input)
+    {
+        accelerationInput = input;
+    }
+
+    public float getAccelerationInput()
+    {
+        return accelerationInput;
     }
 
     private void FixedUpdate()

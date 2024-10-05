@@ -1329,6 +1329,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 347b25a4-cbe6-4b73-9cb6-c26811712b83
     m_ActionName: Car/Respawn[/SwitchProControllerHID/start,/XInputControllerWindows/start,/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f0950a52-e9c3-4cae-9985-10926f4a848a
+    m_ActionName: Car/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Car
@@ -2166,63 +2170,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &2358398104967585152
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3606589765912647060, guid: 75eda8298e122774591e3a4e1c8c16c0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -33.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606589765912647060, guid: 75eda8298e122774591e3a4e1c8c16c0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -14.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606589765912647060, guid: 75eda8298e122774591e3a4e1c8c16c0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606589765912647060, guid: 75eda8298e122774591e3a4e1c8c16c0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606589765912647060, guid: 75eda8298e122774591e3a4e1c8c16c0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606589765912647060, guid: 75eda8298e122774591e3a4e1c8c16c0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606589765912647060, guid: 75eda8298e122774591e3a4e1c8c16c0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606589765912647060, guid: 75eda8298e122774591e3a4e1c8c16c0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606589765912647060, guid: 75eda8298e122774591e3a4e1c8c16c0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606589765912647060, guid: 75eda8298e122774591e3a4e1c8c16c0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8449397447888092708, guid: 75eda8298e122774591e3a4e1c8c16c0, type: 3}
-      propertyPath: m_Name
-      value: BreakableBox
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 75eda8298e122774591e3a4e1c8c16c0, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2230,4 +2177,3 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1137717424}
   - {fileID: 1397163161}
-  - {fileID: 2358398104967585152}

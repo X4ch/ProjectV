@@ -53,6 +53,15 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LaunchedRespawn"",
+                    ""type"": ""Button"",
+                    ""id"": ""f0950a52-e9c3-4cae-9985-10926f4a848a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -297,6 +306,28 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""action"": ""Respawn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d5f26eac-6220-4378-85ec-e8f62aefbb7e"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LaunchedRespawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e2d13f40-a7f4-43ab-a13e-27bcefcd9c28"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LaunchedRespawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -308,6 +339,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         m_Car_Steering = m_Car.FindAction("Steering", throwIfNotFound: true);
         m_Car_Engine = m_Car.FindAction("Engine", throwIfNotFound: true);
         m_Car_Respawn = m_Car.FindAction("Respawn", throwIfNotFound: true);
+        m_Car_LaunchedRespawn = m_Car.FindAction("LaunchedRespawn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -372,6 +404,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Car_Steering;
     private readonly InputAction m_Car_Engine;
     private readonly InputAction m_Car_Respawn;
+    private readonly InputAction m_Car_LaunchedRespawn;
     public struct CarActions
     {
         private @CarInput m_Wrapper;
@@ -379,6 +412,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         public InputAction @Steering => m_Wrapper.m_Car_Steering;
         public InputAction @Engine => m_Wrapper.m_Car_Engine;
         public InputAction @Respawn => m_Wrapper.m_Car_Respawn;
+        public InputAction @LaunchedRespawn => m_Wrapper.m_Car_LaunchedRespawn;
         public InputActionMap Get() { return m_Wrapper.m_Car; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -397,6 +431,9 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
             @Respawn.started += instance.OnRespawn;
             @Respawn.performed += instance.OnRespawn;
             @Respawn.canceled += instance.OnRespawn;
+            @LaunchedRespawn.started += instance.OnLaunchedRespawn;
+            @LaunchedRespawn.performed += instance.OnLaunchedRespawn;
+            @LaunchedRespawn.canceled += instance.OnLaunchedRespawn;
         }
 
         private void UnregisterCallbacks(ICarActions instance)
@@ -410,6 +447,9 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
             @Respawn.started -= instance.OnRespawn;
             @Respawn.performed -= instance.OnRespawn;
             @Respawn.canceled -= instance.OnRespawn;
+            @LaunchedRespawn.started -= instance.OnLaunchedRespawn;
+            @LaunchedRespawn.performed -= instance.OnLaunchedRespawn;
+            @LaunchedRespawn.canceled -= instance.OnLaunchedRespawn;
         }
 
         public void RemoveCallbacks(ICarActions instance)
@@ -432,5 +472,6 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         void OnSteering(InputAction.CallbackContext context);
         void OnEngine(InputAction.CallbackContext context);
         void OnRespawn(InputAction.CallbackContext context);
+        void OnLaunchedRespawn(InputAction.CallbackContext context);
     }
 }
