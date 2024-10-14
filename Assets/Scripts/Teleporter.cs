@@ -12,12 +12,13 @@ public class Teleporter : MonoBehaviour
     {
         GameObject carObject = collision.gameObject;
         CarController car = collision.GetComponent<CarController>();
-        if (car != null && car.canTeleport)
+        if (car != null)
         {
-            Destroy(carObject);
-            GameObject carInstance = Instantiate(carPrefab, exitPortal.transform.position, exitPortal.transform.rotation);
-            carInstance.GetComponent<CarController>().setTeleportationTime(0);
-            carInstance.GetComponent<CarController>().canTeleport = false;
+            //Destroy(carObject);
+            //Instantiate(carPrefab, exitPortal.transform.position, exitPortal.transform.rotation);
+
+            carObject.transform.position = exitPortal.transform.position;
+            car.setRotation(exitPortal.transform.rotation.eulerAngles.z);
         }
     }
 }

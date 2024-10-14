@@ -17,16 +17,7 @@ public class CarController : MonoBehaviour
     public float dragFactor = 3.0f;
     public float backwardSpeedFactor = 0.5f;
 
-    public bool canTeleport;
-    public int teleportationCooldownInSeconds = 5;
-    private float lastTeleportTime;
-
     private TrackManager trackManager; // Reference to TrackManager
-
-    public void setTeleportationTime (float time)
-    {
-        lastTeleportTime = time;
-    }
 
     private float velocityVsUp;
     private float rotationAngle;
@@ -56,7 +47,6 @@ public class CarController : MonoBehaviour
     private void Awake()
     {
         carRigidbody2D = GetComponent<Rigidbody2D>();
-        canTeleport = true;
     }
 
     private void Start()
@@ -94,13 +84,6 @@ public class CarController : MonoBehaviour
             ApplyEngineForce();
             KillOrthogonalVelocity();
             ApplySteering();
-        }
-
-        lastTeleportTime += Time.deltaTime;
-
-        if (lastTeleportTime >= teleportationCooldownInSeconds)
-        {
-            canTeleport = true;
         }
     }
 
