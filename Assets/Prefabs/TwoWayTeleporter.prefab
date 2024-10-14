@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b9cba89ada8fe42b4495d72bb670be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carPrefab: {fileID: 1228123914914350077, guid: 30e0f4fd779066642ac51fd01c900a09, type: 3}
   exitPortal: {fileID: 8514401649957920226}
 --- !u!70 &4339517414735557334
 CapsuleCollider2D:
@@ -265,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b9cba89ada8fe42b4495d72bb670be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carPrefab: {fileID: 1228123914914350077, guid: 30e0f4fd779066642ac51fd01c900a09, type: 3}
   exitPortal: {fileID: 5618031534106877755}
 --- !u!70 &6394277186664967077
 CapsuleCollider2D:
