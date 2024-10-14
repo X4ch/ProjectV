@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
         ShowRaceUI(); // Show the race UI after countdown ends
     }
 
-    private void ShowRaceUI()
+    public void ShowRaceUI()
     {
         raceUI.SetActive(true);
     }
