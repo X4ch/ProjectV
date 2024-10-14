@@ -21,6 +21,8 @@ public class CarController : MonoBehaviour
     public int teleportationCooldownInSeconds = 5;
     private float lastTeleportTime;
 
+    private TrackManager trackManager; // Reference to TrackManager
+
     public void setTeleportationTime (float time)
     {
         lastTeleportTime = time;
@@ -59,6 +61,7 @@ public class CarController : MonoBehaviour
 
     private void Start()
     {
+        trackManager = FindObjectOfType<TrackManager>();
         rotationAngle = transform.rotation.eulerAngles.z;
     }
 
@@ -86,9 +89,12 @@ public class CarController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ApplyEngineForce();
-        KillOrthogonalVelocity();
-        ApplySteering();
+        if (trackManager != null && trackManager.isTrackStarted)
+        {
+            ApplyEngineForce();
+            KillOrthogonalVelocity();
+            ApplySteering();
+        }
 
         lastTeleportTime += Time.deltaTime;
 

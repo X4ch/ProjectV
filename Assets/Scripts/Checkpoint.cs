@@ -9,6 +9,6 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter2D()
     {
-        trackManager.GetComponent<TrackManager>().crossCheckpoint(this);
+        trackManager.GetComponent<TrackManager>().CrossCheckpoint(this);
     }
 }

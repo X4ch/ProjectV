@@ -1,31 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
 public class TrackManager : MonoBehaviour
 {
 
-    [SerializeField] bool isMultiLap;
-    [SerializeField] int numberOfLap;
-    private int lapCounter;
+    [SerializeField] bool isMultilap; // probably useless
+    [SerializeField] public int numberOfLapsTotal;
+    public int numberOfLapsCrossed;
 
-    [SerializeField] GameObject startLine;
-
-    [SerializeField] GameObject endLine;
-    private BoxCollider2D endLineCollider;
+    [SerializeField] GameObject startline;
+    [SerializeField] GameObject endline;
+    private BoxCollider2D endlineCollider;
 
     [SerializeField] GameObject carPrefab;
     private GameObject car;
 
-    private bool isTrackFinished;
-    private float trackTimer;
+    public bool isTrackStarted = false; // private and Setters and Getters would be better...
+    //private bool isTrackFinished = false;
+    private float trackTimerStart;
+    public float trackTimer; // private and Setters and Getters would be better...
+    private List<float> lapTimers;
 
-    [SerializeField] private int numberOfCheckpointCrossed;
-    private int numberOfCheckpoints;
     [SerializeField] List<GameObject> checkpoints;
+    private int numberOfCheckpointsTotal;
+    private int numberOfCheckpointsCrossed;
 
-    private GameObject currentCheckPoint;
+    private GameObject currentCheckpoint;
 
     private Vector3 carPositionAtCheckpoint;
     private Quaternion carAngleAtCheckpoint;
@@ -33,18 +37,18 @@ public class TrackManager : MonoBehaviour
     private float carRotationAtCheckpoint;
     private float carAccelerationInput;
 
-    public void crossCheckpoint(Checkpoint checkpoint)
+    public void CrossCheckpoint(Checkpoint checkpoint)
     {
         Debug.Log("Checkpoint crossed");
 
-        numberOfCheckpointCrossed++;
+        numberOfCheckpointsCrossed++;
         checkpoint.GetComponent<BoxCollider2D>().enabled = false;
-        currentCheckPoint = checkpoints[numberOfCheckpointCrossed - 1];
+        currentCheckpoint = checkpoints[numberOfCheckpointsCrossed - 1];
 
-        setCarStatus();
+        SetCarStatus();
     }
 
-    private void setCarStatus()
+    private void SetCarStatus()
     {
         CarController controller = car.GetComponent<CarController>();
 
@@ -55,40 +59,37 @@ public class TrackManager : MonoBehaviour
         carAccelerationInput = controller.getAccelerationInput();
     }
 
-    public void crossEndLine()
+    private void AddLapTimer()
     {
-        if (isMultiLap)
-        {
-            Debug.Log("Lap finished");
+        
+        lapTimers.Add(trackTimer);
 
-            lapCounter++;
-            numberOfCheckpointCrossed = 0;
-            endLineCollider.enabled = false;
+        int minutes = Mathf.FloorToInt(trackTimer / 60F);
+        int seconds = Mathf.FloorToInt(trackTimer - minutes * 60);
+        int milliseconds = Mathf.FloorToInt((trackTimer - minutes * 60 - seconds) * 1000);
+        Debug.Log(string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds));
+    }
 
-            currentCheckPoint = endLine;
+    public void CrossEndline()
+    {
+        Debug.Log("Lap finished");
 
-            setCarStatus();
+        numberOfLapsCrossed++;
+        numberOfCheckpointsCrossed = 0;
+        endlineCollider.enabled = false;
 
-            if (lapCounter == numberOfLap)
-            {
-                EndTrack();
-            }
-            else
-            {
-                reanableCheckpoints();
-            }
-        }
+        currentCheckpoint = endline;
 
-        else
-        {
-            Debug.Log("Track ended");
+        SetCarStatus();
 
-            EndTrack();
-        }
+        AddLapTimer();
+
+        if (numberOfLapsCrossed == numberOfLapsTotal) EndTrack();
+        else RenableCheckpoints();
         
     }
 
-    private void reanableCheckpoints()
+    private void RenableCheckpoints()
     {
         foreach (var checkpoint in checkpoints)
         {
@@ -100,10 +101,10 @@ public class TrackManager : MonoBehaviour
         Debug.Log("Track finished");
         car.SetActive(false);
 
-        // TO DO : implement logic when a track is done
+        // TODO : add the menu with the timers, and the possibility to restart the track or go back to the main menu
     }
 
-    public void onLaunchedRespawn()
+    public void OnLaunchedRespawn()
     {
         Destroy(car);
         car = Instantiate(carPrefab, carPositionAtCheckpoint, carAngleAtCheckpoint);
@@ -113,34 +114,81 @@ public class TrackManager : MonoBehaviour
         controller.setAccelerationInput(carAccelerationInput);
     }
 
-    public void onRespawn()
+    public void OnRespawn()
     {
         Destroy(car);
-        car = Instantiate(carPrefab, currentCheckPoint.transform.position, currentCheckPoint.transform.rotation);
-        //car.GetComponent<Rigidbody2D>().MoveRotation(currentCheckPoint.transform.rotation);
+        car = Instantiate(carPrefab, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);
+        //car.GetComponent<Rigidbody2D>().MoveRotation(currentCheckpoint.transform.rotation);
+    }
+    public float GetCarVelocity()
+    {
+        return car.GetComponent<CarController>().getVelocity();
     }
 
-    // Start is called before the first frame update
-    void Start()
+
+// Start is called before the first frame update
+    private void Start()
     {
-        numberOfCheckpoints = checkpoints.Count;
-        car = Instantiate(carPrefab, startLine.transform.position, startLine.transform.rotation);
-        setCarStatus();
+        numberOfCheckpointsTotal = checkpoints.Count;
+        car = Instantiate(carPrefab, startline.transform.position, startline.transform.rotation);
+        SetCarStatus();
 
-        endLineCollider = endLine.GetComponent<BoxCollider2D>();
-        endLineCollider.enabled = false;
+        endlineCollider = endline.GetComponent<BoxCollider2D>();
+        endlineCollider.enabled = false;
 
-        currentCheckPoint = startLine;
+        currentCheckpoint = startline;
+        StartCoroutine(Countdown(5));
+    }
+
+    IEnumerator Countdown(int seconds)
+    {
+
+        for (int i = seconds; i > 4; i--)
+        {
+            Debug.Log(i);
+            yield return new WaitForSeconds(1);
+        }
+
+        Debug.Log("3");
+        UIManager.Instance.DisplayCountdown("3");
+        yield return new WaitForSeconds(1);
+
+        Debug.Log("2");
+        UIManager.Instance.DisplayCountdown("2");
+        yield return new WaitForSeconds(1);
+
+        Debug.Log("1");
+        UIManager.Instance.DisplayCountdown("1");
+        yield return new WaitForSeconds(1);
+
+        Debug.Log("0");
+        UIManager.Instance.DisplayCountdown("Go !");
+        StartGame();
+
+        yield return new WaitForSeconds(1);
+        UIManager.Instance.HideStartUI();
+    }
+
+    void StartGame()
+    {
+        lapTimers = new List<float>();
+        trackTimerStart = Time.time;
+        isTrackStarted = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        trackTimer += Time.deltaTime;
-
-        if (numberOfCheckpointCrossed == numberOfCheckpoints) 
+        if (!isTrackStarted)
         {
-            endLineCollider.enabled = true;
+            return;
+        }
+        trackTimer = Time.time - trackTimerStart;
+
+        if (numberOfCheckpointsCrossed == numberOfCheckpointsTotal)
+        {
+            endlineCollider.enabled = true;
         }
     }
+
 }
