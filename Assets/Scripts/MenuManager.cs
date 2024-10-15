@@ -15,7 +15,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject carSelectionMenuFirstButton;
     [SerializeField] private GameObject optionsMenuFirstButton;
 
-
     private string levelToLoad;
 
     public void LoadMainMenu(GameObject currentMenu)
@@ -55,7 +54,7 @@ public class MenuManager : MonoBehaviour
     public void LoadLevelScene()
     {
         //SceneManager.LoadScene(levelToLoad);
-        SceneManager.LoadScene("FirstLevel");
+        SceneManager.LoadScene(levelToLoad);
     }
 
     //Set the name of level you want to load, if no name has been set, make levelToLoad null
