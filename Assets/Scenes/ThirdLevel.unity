@@ -857,7 +857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &410072650
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3466,7 +3466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1282282502
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4595,7 +4595,7 @@ GameObject:
   - component: {fileID: 1703094436}
   - component: {fileID: 1703094437}
   m_Layer: 0
-  m_Name: Track manager
+  m_Name: TrackManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4663,7 +4663,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1703094436}
         m_TargetAssemblyTypeName: TrackManager, Assembly-CSharp
-        m_MethodName: onRespawn
+        m_MethodName: OnRespawn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4679,7 +4679,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1703094436}
         m_TargetAssemblyTypeName: TrackManager, Assembly-CSharp
-        m_MethodName: onLaunchedRespawn
+        m_MethodName: OnLaunchedRespawn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5207,8 +5207,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 575198069}
-  - {fileID: 1703094438}
-  - {fileID: 1597896567}
-  - {fileID: 208215804}
-  - {fileID: 149893988}
   - {fileID: 1973549538}
+  - {fileID: 1703094438}
+  - {fileID: 149893988}
+  - {fileID: 208215804}
+  - {fileID: 1597896567}

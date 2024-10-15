@@ -40,10 +40,13 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HideRaceUI();
+        startUI.SetActive(true);
+        raceUI.SetActive(false);
+
         timerText.text = "00:00:000";
         speedText.text = "0 km/h";
         lapText.text = "0/0";
+
         countdownText.text = "Ready ?";
     }
 
@@ -66,7 +69,6 @@ public class UIManager : MonoBehaviour
     public void HideStartUI()
     {
         startUI.gameObject.SetActive(false); // Hide countdown after it's done
-        ShowRaceUI(); // Show the race UI after countdown ends
     }
 
     public void ShowRaceUI()

@@ -883,7 +883,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &588753456
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1153,7 +1153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 1d844011e21733946be2bb1380c4b549, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -1164,7 +1164,47 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 495bba77-41f0-42b9-88b2-2697d5cb2768
+    m_ActionName: Car/Steering[/XInputControllerWindows/leftStick/x,/SwitchProControllerHID/leftStick/x,/XInputControllerWindows/dpad/x,/SwitchProControllerHID/dpad/x,/Keyboard/leftArrow,/Keyboard/rightArrow,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f0d35f7a-50c8-4fa9-8031-92f3d7be6b04
+    m_ActionName: Car/Engine[/XInputControllerWindows/rightShoulder,/SwitchProControllerHID/rightShoulder,/XInputControllerWindows/leftShoulder,/SwitchProControllerHID/leftShoulder,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/s,/Keyboard/w,/XInputControllerWindows/rightTrigger,/SwitchProControllerHID/rightTrigger,/XInputControllerWindows/leftTrigger,/SwitchProControllerHID/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 900922439}
+        m_TargetAssemblyTypeName: TrackManager, Assembly-CSharp
+        m_MethodName: OnRespawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 347b25a4-cbe6-4b73-9cb6-c26811712b83
+    m_ActionName: Car/Respawn[/XInputControllerWindows/start,/SwitchProControllerHID/start,/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 900922439}
+        m_TargetAssemblyTypeName: TrackManager, Assembly-CSharp
+        m_MethodName: OnLaunchedRespawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f0950a52-e9c3-4cae-9985-10926f4a848a
+    m_ActionName: Car/LaunchedRespawn[/Keyboard/backspace,/XInputControllerWindows/select,/SwitchProControllerHID/select]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Car
@@ -1187,7 +1227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1025636387
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1429,7 +1469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1231687233
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1563,7 +1603,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1287413707
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1938,7 +1978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1783684977
 RectTransform:
   m_ObjectHideFlags: 0
