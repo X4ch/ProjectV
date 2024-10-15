@@ -24,12 +24,12 @@ public class MovingObstacle : MonoBehaviour
 
         if (!isReturning)
         {
-            Vector3 newPosition = Vector3.MoveTowards(obstacle.transform.position, target.transform.position, movingSpeed);
+            Vector3 newPosition = Vector3.MoveTowards(obstacle.transform.position, target.transform.position, movingSpeed*Time.deltaTime);
             obstacle.transform.position = newPosition;
         }
         else
         {
-            Vector3 newPosition = Vector3.MoveTowards(obstacle.transform.position, this.transform.position, movingSpeed);
+            Vector3 newPosition = Vector3.MoveTowards(obstacle.transform.position, this.transform.position, movingSpeed*Time.deltaTime);
             obstacle.transform.position = newPosition;
         }
         

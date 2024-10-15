@@ -209,4 +209,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacle: {fileID: 1018166762768434926}
   target: {fileID: 3994099764492251789}
-  movingSpeed: 0.05
+  movingSpeed: 7

@@ -3541,6 +3541,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4617729288027357034, guid: 76ef754a62317c340873eaca7cc329da, type: 3}
+      propertyPath: movingSpeed
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4853098635876507276, guid: 76ef754a62317c340873eaca7cc329da, type: 3}
       propertyPath: m_Color.b
       value: 0.07529365
