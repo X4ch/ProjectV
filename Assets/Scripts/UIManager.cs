@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -27,7 +29,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text speedText;
     [SerializeField] private TMP_Text lapText;
 
-    
+    [SerializeField] private GameObject endUI;
+    [SerializeField] private TMP_Text finalTimeText;
+    [SerializeField] private List<TMP_Text> lapTimerTexts;
+    [SerializeField] private GameObject endUIFirstButton;
+
 
     private void Awake()
     {
@@ -37,11 +43,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         startUI.SetActive(true);
         raceUI.SetActive(false);
+        endUI.SetActive(false);
 
         timerText.text = "00:00:000";
         speedText.text = "0 km/h";
@@ -76,9 +82,41 @@ public class UIManager : MonoBehaviour
         raceUI.SetActive(true);
     }
 
-    private void HideRaceUI()
+    public void HideRaceUI()
     {
         raceUI.SetActive(false);
+    }
+
+    public void ShowEndUI(List<float> lapTimers)
+    {
+        endUI.SetActive(true);
+        finalTimeText.text = string.Format("Time : " + DisplayTime(lapTimers.Sum()));
+        for (int i = 0; i < lapTimers.Count; i++)
+        {
+            lapTimerTexts[i].gameObject.SetActive(true);
+            lapTimerTexts[i].text = string.Format("Lap {0} : " + DisplayTime(lapTimers[i]), i + 1);
+        }
+        for (int i = lapTimers.Count; i < lapTimerTexts.Count; i++)
+        {
+            lapTimerTexts[i].gameObject.SetActive(false);
+        }
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(endUIFirstButton);
+    }
+    public void HideEndUI()
+    {
+        endUI.SetActive(false);
+    }
+
+    public static void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public static void ReturnToMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 
     private static string DisplayTime(float time)

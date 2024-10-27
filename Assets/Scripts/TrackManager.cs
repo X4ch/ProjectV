@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
+using System.Linq;
 
 public class TrackManager : MonoBehaviour
 {
@@ -61,13 +59,8 @@ public class TrackManager : MonoBehaviour
 
     private void AddLapTimer()
     {
-        
-        lapTimers.Add(trackTimer);
-
-        int minutes = Mathf.FloorToInt(trackTimer / 60F);
-        int seconds = Mathf.FloorToInt(trackTimer - minutes * 60);
-        int milliseconds = Mathf.FloorToInt((trackTimer - minutes * 60 - seconds) * 1000);
-        Debug.Log(string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds));
+        float lapTime = trackTimer - lapTimers.Sum();
+        lapTimers.Add(lapTime);
     }
 
     public void CrossEndline()
@@ -100,6 +93,9 @@ public class TrackManager : MonoBehaviour
     {
         Debug.Log("Track finished");
         car.SetActive(false);
+
+        UIManager.Instance.HideRaceUI();
+        UIManager.Instance.ShowEndUI(lapTimers);
 
         // TODO : add the menu with the timers, and the possibility to restart the track or go back to the main menu
     }
