@@ -20,9 +20,12 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject startUI;
     [SerializeField] private TMP_Text countdownText;
-    [SerializeField] private GameObject redCircle;
-    [SerializeField] private GameObject yellowCircle;
-    [SerializeField] private GameObject greenCircle;
+    [SerializeField] private GameObject circle_3;
+    [SerializeField] private GameObject circle_2;
+    [SerializeField] private GameObject circle_1;
+
+    private Color redOn = new Color32(0xFF, 0x00, 0x00, 0xFF); // Bright red
+    private Color greenOn = new Color32(0x00, 0xFF, 0x00, 0xFF); // Bright green
 
     [SerializeField] private GameObject raceUI;
     [SerializeField] private TMP_Text timerText;
@@ -70,6 +73,25 @@ public class UIManager : MonoBehaviour
     public void DisplayCountdown(string currentCountdown)
     {
         countdownText.text = currentCountdown;
+    }
+    public void Light3()
+    {
+        circle_3.GetComponent<UnityEngine.UI.Image>().color = redOn;
+    }
+    public void Light2()
+    {
+        circle_2.GetComponent<UnityEngine.UI.Image>().color = redOn;
+    }
+    public void Light1()
+    {
+        circle_1.GetComponent<UnityEngine.UI.Image>().color = redOn;
+    }
+
+    public void LightAll()
+    {
+        circle_3.GetComponent<UnityEngine.UI.Image>().color = greenOn;
+        circle_2.GetComponent<UnityEngine.UI.Image>().color = greenOn;
+        circle_1.GetComponent<UnityEngine.UI.Image>().color = greenOn;
     }
 
     public void HideStartUI()

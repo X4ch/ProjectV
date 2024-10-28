@@ -138,27 +138,25 @@ public class TrackManager : MonoBehaviour
 
     IEnumerator Countdown(int seconds)
     {
-
         for (int i = seconds; i > 4; i--)
         {
-            Debug.Log(i);
             yield return new WaitForSeconds(1);
         }
 
-        Debug.Log("3");
         UIManager.Instance.DisplayCountdown("3");
+        UIManager.Instance.Light3();
         yield return new WaitForSeconds(1);
 
-        Debug.Log("2");
         UIManager.Instance.DisplayCountdown("2");
+        UIManager.Instance.Light2();
         yield return new WaitForSeconds(1);
 
-        Debug.Log("1");
         UIManager.Instance.DisplayCountdown("1");
+        UIManager.Instance.Light1();
         yield return new WaitForSeconds(1);
 
-        Debug.Log("0");
         UIManager.Instance.DisplayCountdown("Go !");
+        UIManager.Instance.LightAll();
         StartGame();
 
         yield return new WaitForSeconds(1);
