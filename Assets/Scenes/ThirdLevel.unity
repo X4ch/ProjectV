@@ -1078,6 +1078,7 @@ MonoBehaviour:
   speedText: {fileID: 1138554529}
   lapText: {fileID: 956879180}
   endUI: {fileID: 1110239751}
+  endUIFirstButton: {fileID: 1127322478}
   finalTimeText: {fileID: 1020589062}
   lapTimerTexts:
   - {fileID: 337065194}
@@ -1090,7 +1091,6 @@ MonoBehaviour:
   - {fileID: 1408633266}
   - {fileID: 678494456}
   - {fileID: 494455674}
-  endUIFirstButton: {fileID: 1127322478}
 --- !u!4 &149893988
 Transform:
   m_ObjectHideFlags: 0
@@ -8041,6 +8041,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8560484651610840391, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 575198069}
     - target: {fileID: 8591359212012268597, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
       propertyPath: m_Name
       value: ScreenShake

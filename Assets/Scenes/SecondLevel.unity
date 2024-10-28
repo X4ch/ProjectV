@@ -532,6 +532,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8560484651610840391, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 1968416267}
     - target: {fileID: 8591359212012268597, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
       propertyPath: m_Name
       value: ScreenShake
@@ -7241,6 +7245,7 @@ MonoBehaviour:
   speedText: {fileID: 679899442}
   lapText: {fileID: 1403987698}
   endUI: {fileID: 808818069}
+  endUIFirstButton: {fileID: 1333828439}
   finalTimeText: {fileID: 708216556}
   lapTimerTexts:
   - {fileID: 24747361}
@@ -7253,7 +7258,6 @@ MonoBehaviour:
   - {fileID: 909261219}
   - {fileID: 1428282610}
   - {fileID: 275255351}
-  endUIFirstButton: {fileID: 1333828439}
 --- !u!4 &2080212879
 Transform:
   m_ObjectHideFlags: 0
