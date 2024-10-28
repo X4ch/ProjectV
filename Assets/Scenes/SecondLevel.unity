@@ -484,6 +484,74 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &166489920
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.22552
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.38464308
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.33403754
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591359212012268597, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_Name
+      value: ScreenShake
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+--- !u!114 &166489921 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8560484651610840391, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+  m_PrefabInstance: {fileID: 166489920}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e393b9bdaf2e444ea8eebef8b42fd70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &190487991
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,6 +974,7 @@ GameObject:
   - component: {fileID: 263852722}
   - component: {fileID: 263852721}
   - component: {fileID: 263852723}
+  - component: {fileID: 263852724}
   m_Layer: 0
   m_Name: Inner wall
   m_TagString: Untagged
@@ -1544,6 +1613,21 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &263852724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263852719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f362a58bf7d88347a4ae3a803a459e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenShake: {fileID: 166489921}
+  edgeCollider: {fileID: 263852723}
+  car: {fileID: 0}
 --- !u!1 &275255349
 GameObject:
   m_ObjectHideFlags: 0
@@ -3174,6 +3258,7 @@ GameObject:
   - component: {fileID: 1050610234}
   - component: {fileID: 1050610233}
   - component: {fileID: 1050610235}
+  - component: {fileID: 1050610236}
   m_Layer: 0
   m_Name: Outer wall
   m_TagString: Untagged
@@ -3860,6 +3945,21 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &1050610236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050610231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f362a58bf7d88347a4ae3a803a459e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenShake: {fileID: 166489921}
+  edgeCollider: {fileID: 1050610235}
+  car: {fileID: 0}
 --- !u!1 &1145500772
 GameObject:
   m_ObjectHideFlags: 0
@@ -7313,3 +7413,4 @@ SceneRoots:
   - {fileID: 2080212879}
   - {fileID: 116013640}
   - {fileID: 678587614}
+  - {fileID: 166489920}
