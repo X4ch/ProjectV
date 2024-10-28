@@ -16,8 +16,10 @@ public class UIManager : MonoBehaviour
     //[SerializeField] private GameObject pauseMenu;
     //[SerializeField] private GameObject gameMenu;
 
+    [Header("Track Manager")]
     [SerializeField] private TrackManager trackManager;
 
+    [Header("Starting UI")]
     [SerializeField] private GameObject startUI;
     [SerializeField] private TMP_Text countdownText;
     [SerializeField] private GameObject circle_3;
@@ -27,16 +29,17 @@ public class UIManager : MonoBehaviour
     private Color redOn = new Color32(0xFF, 0x00, 0x00, 0xFF); // Bright red
     private Color greenOn = new Color32(0x00, 0xFF, 0x00, 0xFF); // Bright green
 
+    [Header("Racing UI")]
     [SerializeField] private GameObject raceUI;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text speedText;
     [SerializeField] private TMP_Text lapText;
 
+    [Header("Ending UI")]
     [SerializeField] private GameObject endUI;
+    [SerializeField] private GameObject endUIFirstButton;
     [SerializeField] private TMP_Text finalTimeText;
     [SerializeField] private List<TMP_Text> lapTimerTexts;
-    [SerializeField] private GameObject endUIFirstButton;
-
 
     private void Awake()
     {
