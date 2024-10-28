@@ -1,21 +1,31 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
-
+    [Header("Menus")]
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject levelSelectionMenu;
     [SerializeField] private GameObject carSelectionMenu;
+    [SerializeField] private GameObject validationMenu;
     [SerializeField] private GameObject optionsMenu;
 
+    [Header("First buttons")]
     [SerializeField] private GameObject mainMenuFirstButton;
     [SerializeField] private GameObject levelSelectionMenuFirstButton;
     [SerializeField] private GameObject carSelectionMenuFirstButton;
+    [SerializeField] private GameObject validationMenuFirstButton;
     [SerializeField] private GameObject optionsMenuFirstButton;
 
+    [Header("Controller Guide")]
+    [SerializeField] private TMP_Text controllerGuideText;
+    [SerializeField] private GameObject controllerGuide;
+    [SerializeField] private GameObject keyboardGuide;
+
     private string levelToLoad;
+    private bool isControllerGuide = true;
 
     public void LoadMainMenu(GameObject currentMenu)
     {
@@ -41,6 +51,14 @@ public class MenuManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(carSelectionMenuFirstButton);
     }
 
+    public void LoadValidationMenu(GameObject currentMenu)
+    {
+        currentMenu.SetActive(false);
+        validationMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(validationMenuFirstButton);
+    }
+
     public void LoadOptionsMenu(GameObject currentMenu)
     {
         currentMenu.SetActive(false);
@@ -49,19 +67,37 @@ public class MenuManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(optionsMenuFirstButton);
     }
 
-
-    //Load the level you want : Level1, Level2, Level3, Level4 or Level5 
     public void LoadLevelScene()
     {
-        //SceneManager.LoadScene(levelToLoad);
         SceneManager.LoadScene(levelToLoad);
     }
 
-    //Set the name of level you want to load, if no name has been set, make levelToLoad null
     public void SetLevelToLoad(string levelName)
     {
         if (levelName == "") levelToLoad = null;
         else levelToLoad = levelName;
+    }
+
+    public void SetCar(int carNumber)
+    {
+        //TODO
+    }
+
+    public void SwitchControllerGuide()
+    {
+        if (isControllerGuide)
+        {
+            controllerGuide.SetActive(false);
+            keyboardGuide.SetActive(true);
+            controllerGuideText.text = "Keyboard";
+        }
+        else
+        {
+            keyboardGuide.SetActive(false);
+            controllerGuide.SetActive(true);
+            controllerGuideText.text = "Controller";
+        }
+        isControllerGuide = !isControllerGuide;
     }
 
     public void QuitGame()
