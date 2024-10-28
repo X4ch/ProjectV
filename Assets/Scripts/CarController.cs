@@ -17,7 +17,12 @@ public class CarController : MonoBehaviour
     public float dragFactor = 3.0f;
     public float backwardSpeedFactor = 0.5f;
 
-    private TrackManager trackManager; // Reference to TrackManager
+    [Header("Drift Settings")]
+    public GameObject driftMarkPrefab; // Drag DriftMarkPrefab here in the inspector
+    public float driftAngleThreshold = 20f; // Angle threshold for drifting
+    public float driftMarkLifetime = 1.5f; // Lifetime of drift marks in seconds
+
+    private TrackManager trackManager;
 
     private float velocityVsUp;
     private float rotationAngle;
@@ -81,9 +86,18 @@ public class CarController : MonoBehaviour
     {
         if (trackManager != null && trackManager.isTrackStarted)
         {
+            // Capture the initial rotation angle before steering
+            float initialRotationAngle = rotationAngle;
+
             ApplyEngineForce();
             KillOrthogonalVelocity();
             ApplySteering();
+
+            float rotationChange = Mathf.Abs(rotationAngle - initialRotationAngle);
+            if (Mathf.Abs(steeringInput) > 0 && rotationChange > driftAngleThreshold)
+            {
+                SpawnDriftMark();
+            }
         }
     }
 
@@ -137,6 +151,12 @@ public class CarController : MonoBehaviour
 
         // Kill the orthogonal (sideways) velocity to avoid sliding
         carRigidbody2D.velocity = forwardVelocity + rightVelocity * driftFactor;
+    }
+
+    private void SpawnDriftMark()
+    {
+        GameObject driftMark = Instantiate(driftMarkPrefab, transform.position, transform.rotation);
+        Destroy(driftMark, driftMarkLifetime);
     }
 
     private void OnDisable()

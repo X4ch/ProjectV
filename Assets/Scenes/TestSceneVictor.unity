@@ -844,6 +844,7 @@ GameObject:
   - component: {fileID: 422711277}
   - component: {fileID: 422711276}
   - component: {fileID: 422711275}
+  - component: {fileID: 422711278}
   m_Layer: 0
   m_Name: Outer wall
   m_TagString: Untagged
@@ -1342,6 +1343,21 @@ SpriteShapeRenderer:
     m_Center: {x: 1.8150635, y: -0.54450226, z: 0}
     m_Extent: {x: 67.56398, y: 36.58812, z: 0}
   m_SpriteSortPoint: 0
+--- !u!114 &422711278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422711273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f362a58bf7d88347a4ae3a803a459e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenShake: {fileID: 1550586729}
+  edgeCollider: {fileID: 422711275}
+  car: {fileID: 0}
 --- !u!1 &456107366
 GameObject:
   m_ObjectHideFlags: 0
@@ -2093,7 +2109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMultilap: 1
-  numberOfLapsTotal: 1
+  numberOfLapsTotal: 10
   numberOfLapsCrossed: 0
   startline: {fileID: 1829077618}
   endline: {fileID: 1829077618}
@@ -3320,6 +3336,7 @@ MonoBehaviour:
   speedText: {fileID: 1025636388}
   lapText: {fileID: 1231687234}
   endUI: {fileID: 46496311}
+  endUIFirstButton: {fileID: 2139340506}
   finalTimeText: {fileID: 1141896711}
   lapTimerTexts:
   - {fileID: 296415326}
@@ -3332,7 +3349,6 @@ MonoBehaviour:
   - {fileID: 201157502}
   - {fileID: 1661674005}
   - {fileID: 1346872334}
-  endUIFirstButton: {fileID: 2139340506}
 --- !u!4 &1371442386
 Transform:
   m_ObjectHideFlags: 0
@@ -3593,6 +3609,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538015245}
   m_CullTransparentMesh: 1
+--- !u!1001 &1550586728
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.22552
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.38464308
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.33403754
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639048893559543186, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8560484651610840391, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 519420032}
+    - target: {fileID: 8591359212012268597, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+      propertyPath: m_Name
+      value: ScreenShake
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+--- !u!114 &1550586729 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8560484651610840391, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+  m_PrefabInstance: {fileID: 1550586728}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e393b9bdaf2e444ea8eebef8b42fd70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1661674003
 GameObject:
   m_ObjectHideFlags: 0
@@ -4716,6 +4804,7 @@ GameObject:
   - component: {fileID: 2135986676}
   - component: {fileID: 2135986675}
   - component: {fileID: 2135986674}
+  - component: {fileID: 2135986677}
   m_Layer: 0
   m_Name: Inner wall
   m_TagString: Untagged
@@ -5254,6 +5343,21 @@ SpriteShapeRenderer:
     m_Center: {x: 5.892563, y: -2.3918133, z: 0}
     m_Extent: {x: 51.57738, y: 21.112106, z: 0}
   m_SpriteSortPoint: 0
+--- !u!114 &2135986677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135986672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f362a58bf7d88347a4ae3a803a459e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenShake: {fileID: 1550586729}
+  edgeCollider: {fileID: 2135986674}
+  car: {fileID: 0}
 --- !u!1 &2139340506
 GameObject:
   m_ObjectHideFlags: 0
@@ -5396,3 +5500,4 @@ SceneRoots:
   - {fileID: 1139565320}
   - {fileID: 624791297}
   - {fileID: 1753165925}
+  - {fileID: 1550586728}

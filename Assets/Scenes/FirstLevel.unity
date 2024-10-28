@@ -208,6 +208,7 @@ MonoBehaviour:
   speedText: {fileID: 44003385}
   lapText: {fileID: 214185432}
   endUI: {fileID: 321911724}
+  endUIFirstButton: {fileID: 703693339}
   finalTimeText: {fileID: 751008466}
   lapTimerTexts:
   - {fileID: 345752229}
@@ -220,7 +221,6 @@ MonoBehaviour:
   - {fileID: 1964126824}
   - {fileID: 589520440}
   - {fileID: 1103857517}
-  endUIFirstButton: {fileID: 703693339}
 --- !u!4 &37522817
 Transform:
   m_ObjectHideFlags: 0
@@ -2177,8 +2177,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 519420032}
   baseShakeDuration: 0.5
-  baseShakeMagnitude: 0.2
-  speedToShakeMultiplier: 0.1
+  baseShakeMagnitude: 0.01
+  speedToShakeMultiplier: 0.004
 --- !u!4 &1220768520
 Transform:
   m_ObjectHideFlags: 0
