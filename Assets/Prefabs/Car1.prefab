@@ -14,13 +14,8 @@ GameObject:
   - component: {fileID: 7271446525899764477}
   - component: {fileID: 4199755739820906980}
   m_Layer: 0
-<<<<<<< HEAD:Assets/Prefabs/Car.prefab
-  m_Name: Car
-  m_TagString: Player
-=======
   m_Name: Car1
-  m_TagString: Untagged
->>>>>>> a5414a70798b035b779198cf68f9f259189e446d:Assets/Prefabs/Car1.prefab
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
