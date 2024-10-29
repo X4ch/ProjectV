@@ -143,13 +143,15 @@ public class UIManager : MonoBehaviour
         endUI.SetActive(false);
     }
 
-    public static void RestartGame()
+    public void RestartGame()
     {
+        menuClick.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public static void ReturnToMenu()
+    public void ReturnToMenu()
     {
+        menuClick.Play();
         SceneManager.LoadScene("MenuScene");
     }
 
