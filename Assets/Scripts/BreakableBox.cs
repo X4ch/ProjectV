@@ -19,6 +19,11 @@ public class BreakableBox : MonoBehaviour
             Debug.Log("Box breaked");
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            BoxCollider2D[] colliderList = gameObject.GetComponents<BoxCollider2D>();
+            foreach (var collider in colliderList)
+            {
+                collider.enabled = false;
+            }
         }
     }
 }

@@ -25,6 +25,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject circle_3;
     [SerializeField] private GameObject circle_2;
     [SerializeField] private GameObject circle_1;
+    [SerializeField] private AudioSource audio_3;
+    [SerializeField] private AudioSource audio_2;
+    [SerializeField] private AudioSource audio_1;
+    [SerializeField] private AudioSource audio_go;
 
     private Color redOn = new Color32(0xFF, 0x00, 0x00, 0xFF); // Bright red
     private Color greenOn = new Color32(0x00, 0xFF, 0x00, 0xFF); // Bright green
@@ -40,6 +44,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject endUIFirstButton;
     [SerializeField] private TMP_Text finalTimeText;
     [SerializeField] private List<TMP_Text> lapTimerTexts;
+    [SerializeField] private AudioSource menuClick;
 
     private void Awake()
     {
@@ -79,19 +84,23 @@ public class UIManager : MonoBehaviour
     }
     public void Light3()
     {
+        audio_3.Play();
         circle_3.GetComponent<UnityEngine.UI.Image>().color = redOn;
     }
     public void Light2()
     {
+        audio_2.Play();
         circle_2.GetComponent<UnityEngine.UI.Image>().color = redOn;
     }
     public void Light1()
     {
+        audio_1.Play();
         circle_1.GetComponent<UnityEngine.UI.Image>().color = redOn;
     }
 
     public void LightAll()
     {
+        audio_go.Play();
         circle_3.GetComponent<UnityEngine.UI.Image>().color = greenOn;
         circle_2.GetComponent<UnityEngine.UI.Image>().color = greenOn;
         circle_1.GetComponent<UnityEngine.UI.Image>().color = greenOn;
