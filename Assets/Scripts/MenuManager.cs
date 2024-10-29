@@ -11,6 +11,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject carSelectionMenu;
     [SerializeField] private GameObject validationMenu;
     [SerializeField] private GameObject optionsMenu;
+    [SerializeField] private AudioSource menuClick;
 
     [Header("First buttons")]
     [SerializeField] private GameObject mainMenuFirstButton;
@@ -29,6 +30,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadMainMenu(GameObject currentMenu)
     {
+        menuClick.Play();
         currentMenu.SetActive(false);
         mainMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
@@ -37,6 +39,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadLevelSelectionMenu(GameObject currentMenu)     
     {
+        menuClick.Play();
         currentMenu.SetActive(false);
         levelSelectionMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
@@ -45,6 +48,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadCarSelectionMenu(GameObject currentMenu)
     {
+        menuClick.Play();
         currentMenu.SetActive(false);
         carSelectionMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
@@ -53,6 +57,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadValidationMenu(GameObject currentMenu)
     {
+        menuClick.Play();
         currentMenu.SetActive(false);
         validationMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
@@ -61,6 +66,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadOptionsMenu(GameObject currentMenu)
     {
+        menuClick.Play();
         currentMenu.SetActive(false);
         optionsMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
@@ -69,6 +75,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadLevelScene()
     {
+        menuClick.Play();
         SceneManager.LoadScene(levelToLoad);
     }
 
@@ -85,6 +92,7 @@ public class MenuManager : MonoBehaviour
 
     public void SwitchControllerGuide()
     {
+        menuClick.Play();
         if (isControllerGuide)
         {
             controllerGuide.SetActive(false);
@@ -102,6 +110,7 @@ public class MenuManager : MonoBehaviour
 
     public void QuitGame()
     {
+        menuClick.Play();
         Debug.Log("Successfully quit");
         levelToLoad = null;
         Application.Quit();

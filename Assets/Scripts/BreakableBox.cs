@@ -17,7 +17,8 @@ public class BreakableBox : MonoBehaviour
         {
             audioPlayer.Play();
             Debug.Log("Box breaked");
-            Destroy(this.GameObject());
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 }

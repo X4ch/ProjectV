@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4199755739820906980}
   m_Layer: 0
   m_Name: Car3
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,6 +186,9 @@ MonoBehaviour:
   maxSpeed: 35
   dragFactor: 3
   backwardSpeedFactor: 0.5
+  driftMarkPrefab: {fileID: 0}
+  driftAngleThreshold: 20
+  driftMarkLifetime: 1.5
 --- !u!1 &1828466994089624771
 GameObject:
   m_ObjectHideFlags: 0

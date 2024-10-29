@@ -21,6 +21,7 @@ public class CarController : MonoBehaviour
     public GameObject driftMarkPrefab; // Drag DriftMarkPrefab here in the inspector
     public float driftAngleThreshold = 20f; // Angle threshold for drifting
     public float driftMarkLifetime = 1.5f; // Lifetime of drift marks in seconds
+    public AudioSource driftSound;
 
     private TrackManager trackManager;
 
@@ -156,6 +157,11 @@ public class CarController : MonoBehaviour
     private void SpawnDriftMark()
     {
         GameObject driftMark = Instantiate(driftMarkPrefab, transform.position, transform.rotation);
+        if (!driftSound.isPlaying) 
+        { 
+            driftSound.Play(); 
+        }
+        
         Destroy(driftMark, driftMarkLifetime);
     }
 
