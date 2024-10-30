@@ -3900,6 +3900,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1570012599}
   - component: {fileID: 1570012598}
+  - component: {fileID: 1570012600}
   m_Layer: 0
   m_Name: Voidout zone
   m_TagString: Untagged
@@ -3936,7 +3937,7 @@ EdgeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4005,13 +4006,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570012597}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39.842445, y: 0.32338363, z: -0.63202155}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.748459, y: -9.618928, z: 9.278196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1610186590}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1570012600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570012597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d46b03aeaa880d48a518f64eca47190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackManager: {fileID: 1256659185}
 --- !u!1 &1610186589
 GameObject:
   m_ObjectHideFlags: 0
@@ -4050,6 +4064,8 @@ Transform:
   - {fileID: 771365511}
   - {fileID: 2081930235}
   - {fileID: 323200475}
+  - {fileID: 1570012599}
+  - {fileID: 1923007830}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1659563936
@@ -4474,6 +4490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1923007830}
   - component: {fileID: 1923007829}
+  - component: {fileID: 1923007831}
   m_Layer: 0
   m_Name: Voidout zone 2
   m_TagString: Untagged
@@ -4510,7 +4527,7 @@ EdgeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4541,13 +4558,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923007828}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -87.3, y: 0.7, z: -0.7536046}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -115.39399, y: -9.2423115, z: 9.156613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1610186590}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1923007831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923007828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d46b03aeaa880d48a518f64eca47190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackManager: {fileID: 1256659185}
 --- !u!1 &1953035801
 GameObject:
   m_ObjectHideFlags: 0
@@ -5766,5 +5796,3 @@ SceneRoots:
   - {fileID: 1482730280}
   - {fileID: 1076375717}
   - {fileID: 503698950}
-  - {fileID: 1570012599}
-  - {fileID: 1923007830}

@@ -4,20 +4,11 @@ using UnityEngine;
 
 public class VoidOut : MonoBehaviour
 {
-    [SerializeField] private EdgeCollider2D edgeCollider;
-    [SerializeField] private GameObject car;
+    [SerializeField] private GameObject trackManager;
 
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (car == null)
-        {
-            car = GameObject.FindGameObjectWithTag("Player");
-        }
-
-        if (edgeCollider.IsTouching(car.GetComponent<BoxCollider2D>()))
-        {
-            Debug.Log("Fall in void");
-        }
+        Debug.Log("Fall in void");
+        trackManager.GetComponent<TrackManager>().OnRespawn();
     }
 }
