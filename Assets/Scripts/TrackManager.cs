@@ -35,6 +35,8 @@ public class TrackManager : MonoBehaviour
     private float carRotationAtCheckpoint;
     private float carAccelerationInput;
 
+    [SerializeField] public AudioSource horn;
+
     public void CrossCheckpoint(Checkpoint checkpoint)
     {
         Debug.Log("Checkpoint crossed");
@@ -121,8 +123,15 @@ public class TrackManager : MonoBehaviour
         return car.GetComponent<CarController>().getVelocity();
     }
 
+    public void OnHorn()
+    {
+        if (!horn.isPlaying)
+        {
+            horn.Play();
+        }
+    }
 
-// Start is called before the first frame update
+    // Start is called before the first frame update
     private void Start()
     {
         numberOfCheckpointsTotal = checkpoints.Count;

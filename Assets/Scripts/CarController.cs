@@ -129,6 +129,10 @@ public class CarController : MonoBehaviour
         {
             engineFast.Play();
         }
+        else if (velocityVsUp < 0 && !engineIdle.isPlaying)
+        {
+            engineIdle.Play();
+        }
     }
 
     private void ApplyEngineForce()

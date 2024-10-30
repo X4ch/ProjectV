@@ -62,6 +62,15 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Horn"",
+                    ""type"": ""Button"",
+                    ""id"": ""64d2827a-f060-481d-a524-2457e47583de"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -328,6 +337,61 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""action"": ""LaunchedRespawn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c8690e06-bd90-474b-847d-907e491497cd"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ea310431-df2b-40f8-bc68-cee937eb5186"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2754743-ebf4-4d24-ae79-f3abb1fbfe2c"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2f2e13b-1f11-4f57-ab43-724a8f5e08c6"",
+                    ""path"": ""<AndroidGamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a54b810a-778a-47b5-a4f4-b4455685d35c"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -340,6 +404,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         m_Car_Engine = m_Car.FindAction("Engine", throwIfNotFound: true);
         m_Car_Respawn = m_Car.FindAction("Respawn", throwIfNotFound: true);
         m_Car_LaunchedRespawn = m_Car.FindAction("LaunchedRespawn", throwIfNotFound: true);
+        m_Car_Horn = m_Car.FindAction("Horn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -405,6 +470,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Car_Engine;
     private readonly InputAction m_Car_Respawn;
     private readonly InputAction m_Car_LaunchedRespawn;
+    private readonly InputAction m_Car_Horn;
     public struct CarActions
     {
         private @CarInput m_Wrapper;
@@ -413,6 +479,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         public InputAction @Engine => m_Wrapper.m_Car_Engine;
         public InputAction @Respawn => m_Wrapper.m_Car_Respawn;
         public InputAction @LaunchedRespawn => m_Wrapper.m_Car_LaunchedRespawn;
+        public InputAction @Horn => m_Wrapper.m_Car_Horn;
         public InputActionMap Get() { return m_Wrapper.m_Car; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -434,6 +501,9 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
             @LaunchedRespawn.started += instance.OnLaunchedRespawn;
             @LaunchedRespawn.performed += instance.OnLaunchedRespawn;
             @LaunchedRespawn.canceled += instance.OnLaunchedRespawn;
+            @Horn.started += instance.OnHorn;
+            @Horn.performed += instance.OnHorn;
+            @Horn.canceled += instance.OnHorn;
         }
 
         private void UnregisterCallbacks(ICarActions instance)
@@ -450,6 +520,9 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
             @LaunchedRespawn.started -= instance.OnLaunchedRespawn;
             @LaunchedRespawn.performed -= instance.OnLaunchedRespawn;
             @LaunchedRespawn.canceled -= instance.OnLaunchedRespawn;
+            @Horn.started -= instance.OnHorn;
+            @Horn.performed -= instance.OnHorn;
+            @Horn.canceled -= instance.OnHorn;
         }
 
         public void RemoveCallbacks(ICarActions instance)
@@ -473,5 +546,6 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         void OnEngine(InputAction.CallbackContext context);
         void OnRespawn(InputAction.CallbackContext context);
         void OnLaunchedRespawn(InputAction.CallbackContext context);
+        void OnHorn(InputAction.CallbackContext context);
     }
 }

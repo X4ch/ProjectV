@@ -199,6 +199,7 @@ MonoBehaviour:
   engineSlow: {fileID: 8708674286173341898}
   engineMid: {fileID: 2184045424089948789}
   engineFast: {fileID: 3913607680269543317}
+  horn: {fileID: 0}
 --- !u!82 &-3343058712149016838
 AudioSource:
   m_ObjectHideFlags: 0

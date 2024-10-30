@@ -2645,6 +2645,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f0950a52-e9c3-4cae-9985-10926f4a848a
     m_ActionName: Car/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4199755739820906980, guid: 30e0f4fd779066642ac51fd01c900a09, type: 3}
+        m_TargetAssemblyTypeName: CarController, Assembly-CSharp
+        m_MethodName: OnHorn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 64d2827a-f060-481d-a524-2457e47583de
+    m_ActionName: Car/Horn[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Car
@@ -2677,6 +2693,7 @@ MonoBehaviour:
   - {fileID: 1026415643}
   - {fileID: 771365510}
   - {fileID: 2081930234}
+  horn: {fileID: 0}
 --- !u!4 &1256659188
 Transform:
   m_ObjectHideFlags: 0
