@@ -21,15 +21,9 @@ public class CarController : MonoBehaviour
     public GameObject driftMarkPrefab; // Drag DriftMarkPrefab here in the inspector
     public float driftAngleThreshold = 20f; // Angle threshold for drifting
     public float driftMarkLifetime = 1.5f; // Lifetime of drift marks in seconds
-    public AudioSource driftSound;
-
-    [Header("Engine sounds")]
-    public AudioSource engineIdle;
-    public AudioSource engineSlow;
-    public AudioSource engineMid;
-    public AudioSource engineFast;
 
     private TrackManager trackManager;
+    private GameObject audioManager;
 
     private float velocityVsUp;
     private float rotationAngle;
@@ -59,6 +53,7 @@ public class CarController : MonoBehaviour
     private void Awake()
     {
         carRigidbody2D = GetComponent<Rigidbody2D>();
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager");
     }
 
     private void Start()
@@ -113,25 +108,21 @@ public class CarController : MonoBehaviour
     private void Update()
     {
         Debug.Log("Speed:" + velocityVsUp);
-        if (velocityVsUp <= 0 && !engineIdle.isPlaying)
+        if (velocityVsUp <= 0.1)
         {
-            engineIdle.Play();
+            audioManager.GetComponent<AudioManager>().PlayEngineIdle();
         }
-        else if (velocityVsUp < maxSpeed / 3 && velocityVsUp > 0 && !engineSlow.isPlaying)
+        else if (velocityVsUp < maxSpeed / 3 && velocityVsUp > 0)
         {
-            engineSlow.Play();
+            audioManager.GetComponent<AudioManager>().PlayEngineLow();
         }
-        else if (velocityVsUp >= maxSpeed / 3 && velocityVsUp < maxSpeed * 2 / 3 && !engineMid.isPlaying)
+        else if (velocityVsUp >= maxSpeed / 3 && velocityVsUp < maxSpeed * 2 / 3)
         {
-            engineMid.Play();
+            audioManager.GetComponent<AudioManager>().PlayEngineMid();
         }
-        else if (velocityVsUp >= maxSpeed * 2 / 3 && !engineFast.isPlaying)
+        else if (velocityVsUp >= maxSpeed * 2 / 3)
         {
-            engineFast.Play();
-        }
-        else if (velocityVsUp < 0 && !engineIdle.isPlaying)
-        {
-            engineIdle.Play();
+            audioManager.GetComponent<AudioManager>().PlayEngineFast();
         }
     }
 
@@ -190,10 +181,7 @@ public class CarController : MonoBehaviour
     private void SpawnDriftMark()
     {
         GameObject driftMark = Instantiate(driftMarkPrefab, transform.position, transform.rotation);
-        if (!driftSound.isPlaying) 
-        { 
-            driftSound.Play(); 
-        }
+        audioManager.GetComponent<AudioManager>().PlayDrift(); 
         
         Destroy(driftMark, driftMarkLifetime);
     }

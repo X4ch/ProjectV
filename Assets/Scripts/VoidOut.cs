@@ -5,12 +5,20 @@ using UnityEngine;
 public class VoidOut : MonoBehaviour
 {
     [SerializeField] private GameObject trackManager;
-    [SerializeField] private AudioSource voidOutSound;   
+    private GameObject audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager");
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Fall in void");
-        voidOutSound.Play();
-        trackManager.GetComponent<TrackManager>().OnRespawn();
+        if (collision.gameObject.GetComponent<CarController>() != null)
+        {
+            Debug.Log("Fall in void");
+            audioManager.GetComponent<AudioManager>().PlayVoidOut();
+            trackManager.GetComponent<TrackManager>().OnRespawn();
+        }
     }
 }

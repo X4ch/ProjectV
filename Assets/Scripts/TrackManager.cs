@@ -35,7 +35,7 @@ public class TrackManager : MonoBehaviour
     private float carRotationAtCheckpoint;
     private float carAccelerationInput;
 
-    [SerializeField] public AudioSource horn;
+    [SerializeField] private GameObject audioManager;
 
     public void CrossCheckpoint(Checkpoint checkpoint)
     {
@@ -125,10 +125,7 @@ public class TrackManager : MonoBehaviour
 
     public void OnHorn()
     {
-        if (!horn.isPlaying)
-        {
-            horn.Play();
-        }
+        audioManager.GetComponent<AudioManager>().PlayHorn();
     }
 
     // Start is called before the first frame update

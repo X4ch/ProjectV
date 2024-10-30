@@ -8,14 +8,20 @@ public class BreakableBox : MonoBehaviour
 {
 
     [SerializeField] float breakSpeed = 10f;
-    [SerializeField] AudioSource audioPlayer;
+    private GameObject audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         CarController car = collision.GetComponent<CarController>();
 
         if (car != null && math.abs(car.getVelocity()) >= breakSpeed)
         {
-            audioPlayer.Play();
+            audioManager.GetComponent<AudioManager>().PlayBrokenCrate();
             Debug.Log("Box breaked");
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;

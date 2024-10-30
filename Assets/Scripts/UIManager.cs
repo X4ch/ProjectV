@@ -25,10 +25,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject circle_3;
     [SerializeField] private GameObject circle_2;
     [SerializeField] private GameObject circle_1;
-    [SerializeField] private AudioSource audio_3;
-    [SerializeField] private AudioSource audio_2;
-    [SerializeField] private AudioSource audio_1;
-    [SerializeField] private AudioSource audio_go;
 
     private Color redOn = new Color32(0xFF, 0x00, 0x00, 0xFF); // Bright red
     private Color greenOn = new Color32(0x00, 0xFF, 0x00, 0xFF); // Bright green
@@ -44,7 +40,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject endUIFirstButton;
     [SerializeField] private TMP_Text finalTimeText;
     [SerializeField] private List<TMP_Text> lapTimerTexts;
-    [SerializeField] private AudioSource menuClick;
+
+    [SerializeField] public GameObject audioManager;
 
     private void Awake()
     {
@@ -52,11 +49,6 @@ public class UIManager : MonoBehaviour
         {
             Instance = this;
         }
-
-        audio_1.volume = 0.5f;
-        audio_2.volume = 0.5f;
-        audio_3.volume = 0.5f;
-        audio_go.volume = 0.5f;
     }
 
     void Start()
@@ -89,23 +81,23 @@ public class UIManager : MonoBehaviour
     }
     public void Light3()
     {
-        audio_3.Play();
+        audioManager.GetComponent<AudioManager>().PlayAudio3();
         circle_3.GetComponent<UnityEngine.UI.Image>().color = redOn;
     }
     public void Light2()
     {
-        audio_2.Play();
+        audioManager.GetComponent<AudioManager>().PlayAudio2();
         circle_2.GetComponent<UnityEngine.UI.Image>().color = redOn;
     }
     public void Light1()
     {
-        audio_1.Play();
+        audioManager.GetComponent<AudioManager>().PlayAudio1();
         circle_1.GetComponent<UnityEngine.UI.Image>().color = redOn;
     }
 
     public void LightAll()
     {
-        audio_go.Play();
+        audioManager.GetComponent<AudioManager>().PlayAudioGo();
         circle_3.GetComponent<UnityEngine.UI.Image>().color = greenOn;
         circle_2.GetComponent<UnityEngine.UI.Image>().color = greenOn;
         circle_1.GetComponent<UnityEngine.UI.Image>().color = greenOn;
@@ -150,13 +142,13 @@ public class UIManager : MonoBehaviour
 
     public void RestartGame()
     {
-        menuClick.Play();
+        audioManager.GetComponent<AudioManager>().PlayMenuClick();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ReturnToMenu()
     {
-        menuClick.Play();
+        audioManager.GetComponent<AudioManager>().PlayMenuClick();
         SceneManager.LoadScene("MenuScene");
     }
 

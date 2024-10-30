@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject carSelectionMenu;
     [SerializeField] private GameObject validationMenu;
     [SerializeField] private GameObject optionsMenu;
-    [SerializeField] private AudioSource menuClick;
+    [SerializeField] private GameObject audioManager;
 
     [Header("First buttons")]
     [SerializeField] private GameObject mainMenuFirstButton;
@@ -25,12 +26,15 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject controllerGuide;
     [SerializeField] private GameObject keyboardGuide;
 
+    [Header("Slider")]
+    [SerializeField] private Slider volumeSlider;
+
     private string levelToLoad;
     private bool isControllerGuide = true;
 
     public void LoadMainMenu(GameObject currentMenu)
     {
-        menuClick.Play();
+        audioManager.GetComponent<AudioManager>().PlayMenuClick();
         currentMenu.SetActive(false);
         mainMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
@@ -39,7 +43,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadLevelSelectionMenu(GameObject currentMenu)     
     {
-        menuClick.Play();
+        audioManager.GetComponent<AudioManager>().PlayMenuClick();
         currentMenu.SetActive(false);
         levelSelectionMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
@@ -48,7 +52,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadCarSelectionMenu(GameObject currentMenu)
     {
-        menuClick.Play();
+        audioManager.GetComponent<AudioManager>().PlayMenuClick();
         currentMenu.SetActive(false);
         carSelectionMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
@@ -57,7 +61,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadValidationMenu(GameObject currentMenu)
     {
-        menuClick.Play();
+        audioManager.GetComponent<AudioManager>().PlayMenuClick();
         currentMenu.SetActive(false);
         validationMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
@@ -66,7 +70,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadOptionsMenu(GameObject currentMenu)
     {
-        menuClick.Play();
+        audioManager.GetComponent<AudioManager>().PlayMenuClick();
         currentMenu.SetActive(false);
         optionsMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
@@ -75,7 +79,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadLevelScene()
     {
-        menuClick.Play();
+        audioManager.GetComponent<AudioManager>().PlayMenuClick();
         SceneManager.LoadScene(levelToLoad);
     }
 
@@ -92,7 +96,7 @@ public class MenuManager : MonoBehaviour
 
     public void SwitchControllerGuide()
     {
-        menuClick.Play();
+        audioManager.GetComponent<AudioManager>().PlayMenuClick();
         if (isControllerGuide)
         {
             controllerGuide.SetActive(false);
@@ -110,10 +114,22 @@ public class MenuManager : MonoBehaviour
 
     public void QuitGame()
     {
-        menuClick.Play();
+        audioManager.GetComponent<AudioManager>().PlayMenuClick();
         Debug.Log("Successfully quit");
         levelToLoad = null;
         Application.Quit();
     }
 
+    private void Start()
+    {
+        volumeSlider.onValueChanged.AddListener(delegate { VolumeChange(); });
+        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+    }
+
+    private void VolumeChange()
+    {
+        PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+        PlayerPrefs.Save();
+        Debug.Log("Volume changed");
+    }
 }
