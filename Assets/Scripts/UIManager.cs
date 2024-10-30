@@ -52,6 +52,11 @@ public class UIManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        audio_1.volume = 0.5f;
+        audio_2.volume = 0.5f;
+        audio_3.volume = 0.5f;
+        audio_go.volume = 0.5f;
     }
 
     void Start()
