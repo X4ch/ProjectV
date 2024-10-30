@@ -23,6 +23,12 @@ public class CarController : MonoBehaviour
     public float driftMarkLifetime = 1.5f; // Lifetime of drift marks in seconds
     public AudioSource driftSound;
 
+    [Header("Engine sounds")]
+    public AudioSource engineIdle;
+    public AudioSource engineSlow;
+    public AudioSource engineMid;
+    public AudioSource engineFast;
+
     private TrackManager trackManager;
 
     private float velocityVsUp;
@@ -99,6 +105,29 @@ public class CarController : MonoBehaviour
             {
                 SpawnDriftMark();
             }
+        }
+
+        
+    }
+
+    private void Update()
+    {
+        Debug.Log("Speed:" + velocityVsUp);
+        if (velocityVsUp <= 0 && !engineIdle.isPlaying)
+        {
+            engineIdle.Play();
+        }
+        else if (velocityVsUp < maxSpeed / 3 && velocityVsUp > 0 && !engineSlow.isPlaying)
+        {
+            engineSlow.Play();
+        }
+        else if (velocityVsUp >= maxSpeed / 3 && velocityVsUp < maxSpeed * 2 / 3 && !engineMid.isPlaying)
+        {
+            engineMid.Play();
+        }
+        else if (velocityVsUp >= maxSpeed * 2 / 3 && !engineFast.isPlaying)
+        {
+            engineFast.Play();
         }
     }
 
