@@ -28,8 +28,6 @@ public class ScreenShake : MonoBehaviour
     {
         float elapsedTime = 0f;
 
-        Debug.Log("test");
-
         while (elapsedTime < duration)
         {
             Vector3 randomPoint = originalPosition + Random.insideUnitSphere * magnitude;

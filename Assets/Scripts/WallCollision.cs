@@ -29,7 +29,6 @@ public class WallCollision : MonoBehaviour
 
         if (edgeCollider.IsTouching(car.GetComponent<BoxCollider2D>()))
         {
-            Debug.Log("Wall hit");
             float speed = car.GetComponent<CarController>().getVelocity();
             screenShake.TriggerShake(speed);
         }
