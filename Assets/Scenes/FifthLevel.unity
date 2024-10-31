@@ -1361,7 +1361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenShake: {fileID: 2042870880}
-  edgeCollider: {fileID: 1851066196}
+  edgeCollider: {fileID: 297222750}
   car: {fileID: 0}
 --- !u!68 &297222750
 EdgeCollider2D:
@@ -2187,7 +2187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenShake: {fileID: 2042870880}
-  edgeCollider: {fileID: 1851066196}
+  edgeCollider: {fileID: 545135964}
   car: {fileID: 0}
 --- !u!68 &545135964
 EdgeCollider2D:
@@ -6444,7 +6444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenShake: {fileID: 2042870880}
-  edgeCollider: {fileID: 1851066196}
+  edgeCollider: {fileID: 1383410383}
   car: {fileID: 0}
 --- !u!68 &1383410383
 EdgeCollider2D:
@@ -8502,7 +8502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenShake: {fileID: 2042870880}
-  edgeCollider: {fileID: 1851066196}
+  edgeCollider: {fileID: 1716980077}
   car: {fileID: 0}
 --- !u!68 &1716980077
 EdgeCollider2D:
