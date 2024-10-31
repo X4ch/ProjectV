@@ -29,12 +29,6 @@ public class TrackManager : MonoBehaviour
 
     private GameObject currentCheckpoint;
 
-    private Vector3 carPositionAtCheckpoint;
-    private Quaternion carAngleAtCheckpoint;
-    private float carVelocityAtCheckpoint;
-    private float carRotationAtCheckpoint;
-    private float carAccelerationInput;
-
     [SerializeField] private GameObject audioManager;
 
     public void CrossCheckpoint(Checkpoint checkpoint)
@@ -44,19 +38,6 @@ public class TrackManager : MonoBehaviour
         numberOfCheckpointsCrossed++;
         checkpoint.GetComponent<BoxCollider2D>().enabled = false;
         currentCheckpoint = checkpoints[numberOfCheckpointsCrossed - 1];
-
-        SetCarStatus();
-    }
-
-    private void SetCarStatus()
-    {
-        CarController controller = car.GetComponent<CarController>();
-
-        carPositionAtCheckpoint = car.transform.position;
-        carAngleAtCheckpoint = car.transform.rotation;
-        carVelocityAtCheckpoint = controller.getVelocity();
-        carRotationAtCheckpoint = controller.getRotation();
-        carAccelerationInput = controller.getAccelerationInput();
     }
 
     private void AddLapTimer()
@@ -74,8 +55,6 @@ public class TrackManager : MonoBehaviour
         endlineCollider.enabled = false;
 
         currentCheckpoint = endline;
-
-        SetCarStatus();
 
         AddLapTimer();
 
@@ -102,22 +81,12 @@ public class TrackManager : MonoBehaviour
         // TODO : add the menu with the timers, and the possibility to restart the track or go back to the main menu
     }
 
-    public void OnLaunchedRespawn()
-    {
-        Destroy(car);
-        car = Instantiate(carPrefab, carPositionAtCheckpoint, carAngleAtCheckpoint);
-        CarController controller = car.GetComponent<CarController>();
-        controller.setVelocity(carVelocityAtCheckpoint);
-        controller.setRotation(carRotationAtCheckpoint);
-        controller.setAccelerationInput(carAccelerationInput);
-    }
-
     public void OnRespawn()
     {
         Destroy(car);
         car = Instantiate(carPrefab, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);
-        //car.GetComponent<Rigidbody2D>().MoveRotation(currentCheckpoint.transform.rotation);
     }
+
     public float GetCarVelocity()
     {
         return car.GetComponent<CarController>().getVelocity();
@@ -125,6 +94,7 @@ public class TrackManager : MonoBehaviour
 
     public void OnHorn()
     {
+        Debug.Log("Horn");
         audioManager.GetComponent<AudioManager>().PlayHorn();
     }
 
@@ -133,7 +103,6 @@ public class TrackManager : MonoBehaviour
     {
         numberOfCheckpointsTotal = checkpoints.Count;
         car = Instantiate(carPrefab, startline.transform.position, startline.transform.rotation);
-        SetCarStatus();
 
         endlineCollider = endline.GetComponent<BoxCollider2D>();
         endlineCollider.enabled = false;

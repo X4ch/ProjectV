@@ -107,7 +107,7 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Speed:" + velocityVsUp);
+        //Debug.Log("Speed:" + velocityVsUp);
         if (velocityVsUp <= 0.1)
         {
             audioManager.GetComponent<AudioManager>().PlayEngineIdle();

@@ -33,15 +33,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LaunchedRespawn",
-                    "type": "Button",
-                    "id": "f0950a52-e9c3-4cae-9985-10926f4a848a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Horn",
                     "type": "Button",
                     "id": "64d2827a-f060-481d-a524-2457e47583de",
@@ -291,28 +282,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Respawn",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d5f26eac-6220-4378-85ec-e8f62aefbb7e",
-                    "path": "<Keyboard>/backspace",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LaunchedRespawn",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e2d13f40-a7f4-43ab-a13e-27bcefcd9c28",
-                    "path": "<Gamepad>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LaunchedRespawn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
