@@ -18,7 +18,7 @@ public class TrackManager : MonoBehaviour
     private GameObject carPrefab;
     private GameObject car;
 
-    public bool isTrackStarted = false; // private and Setters and Getters would be better...
+    public bool isTrackRunning = false; // private and Setters and Getters would be better...
     private float trackTimerStart;
     public float trackTimer; // private and Setters and Getters would be better...
     private List<float> lapTimers;
@@ -69,6 +69,7 @@ public class TrackManager : MonoBehaviour
     private void EndTrack()
     {
         car.SetActive(false);
+        isTrackRunning = false;
 
         UIManager.Instance.HideRaceUI();
         UIManager.Instance.ShowEndUI(lapTimers);
@@ -76,6 +77,7 @@ public class TrackManager : MonoBehaviour
 
     public void OnRespawn()
     {
+        if (!isTrackRunning) return;
         Destroy(car);
         car = Instantiate(carPrefab, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);
     }
@@ -87,6 +89,7 @@ public class TrackManager : MonoBehaviour
 
     public void OnHorn()
     {
+        if (!isTrackRunning) return;
         audioManager.GetComponent<AudioManager>().PlayHorn();
     }
 
@@ -156,15 +159,13 @@ public class TrackManager : MonoBehaviour
     {
         lapTimers = new List<float>();
         trackTimerStart = Time.time;
-        isTrackStarted = true;
+        isTrackRunning = true;
     }
 
     void Update()
     {
-        if (!isTrackStarted)
-        {
-            return;
-        }
+        if (!isTrackRunning) return;
+
         trackTimer = Time.time - trackTimerStart;
 
         if (numberOfCheckpointsCrossed == numberOfCheckpointsTotal)

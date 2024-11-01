@@ -64,7 +64,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (trackManager.isTrackStarted)
+        if (trackManager.isTrackRunning)
         {
             timerText.text = DisplayTime(trackManager.trackTimer);
             speedText.text = string.Format("{0:00} km/h", Mathf.RoundToInt(Mathf.Abs(trackManager.GetCarVelocity() * 3.6f)));

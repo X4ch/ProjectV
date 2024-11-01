@@ -86,7 +86,7 @@ public class CarController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (trackManager != null && trackManager.isTrackStarted)
+        if (trackManager != null && trackManager.isTrackRunning)
         {
             // Capture the initial rotation angle before steering
             float initialRotationAngle = rotationAngle;
