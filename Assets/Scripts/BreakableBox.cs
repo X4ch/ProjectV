@@ -35,5 +35,9 @@ public class BreakableBox : MonoBehaviour
                 collider.enabled = false;
             }
         }
+        else if (car != null)
+        {
+            audioManager.GetComponent<AudioManager>().PlayWallHit();
+        }
     }
 }

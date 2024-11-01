@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource engineFast;
     public AudioSource carHorn;
     public AudioSource drift;
+    public AudioSource wallHit;
 
     [Header("Environment audio")]
     public AudioSource voidOut;
@@ -56,6 +58,11 @@ public class AudioManager : MonoBehaviour
         if (!drift.isPlaying) { drift.Play(); }
     }
 
+    public void PlayWallHit()
+    {
+        if (!wallHit.isPlaying) { wallHit.Play(); }
+    }
+
     public void PlayVoidOut()
     {
         if (!voidOut.isPlaying) { voidOut.Play(); }
@@ -95,7 +102,17 @@ public class AudioManager : MonoBehaviour
         volumeLevel = PlayerPrefs.GetFloat("Volume");
         foreach(var audio in gameObject.GetComponents<AudioSource>())
         {
-            audio.volume = volumeLevel;
+            var match = Regex.Match(audio.clip.name, "(engine)|(drift)|(Race)|(Impact)", RegexOptions.IgnoreCase);
+            //Debug.Log(match.Success + " " + audio.clip.name);
+            
+            if (match.Success)
+            {
+                audio.volume = volumeLevel / 3;
+            }
+            else
+            {
+                audio.volume = volumeLevel;
+            }
         }
     }
 }

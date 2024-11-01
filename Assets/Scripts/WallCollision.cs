@@ -8,17 +8,13 @@ public class WallCollision : MonoBehaviour
     [SerializeField] ScreenShake screenShake;
     [SerializeField] EdgeCollider2D edgeCollider;
     [SerializeField] GameObject car;
+    [SerializeField] GameObject audioManager;
 
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager");
+    }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    Debug.Log("Collision with wall detected");
-    //    if (collision.gameObject.GetComponent<CarController>())
-    //    {            
-    //        float speed = collision.gameObject.GetComponent<CarController>().getVelocity();
-    //        screenShake.TriggerShake(speed);
-    //    }
-    //}
     private void Update()
     {
         if (car == null)
@@ -29,6 +25,8 @@ public class WallCollision : MonoBehaviour
         if (edgeCollider.IsTouching(car.GetComponent<BoxCollider2D>()))
         {
             float speed = car.GetComponent<CarController>().getVelocity();
+            //Debug.Log("speed: " + speed);
+            if (speed > 10) { audioManager.GetComponent<AudioManager>().PlayWallHit(); }
             screenShake.TriggerShake(speed);
         }
     }

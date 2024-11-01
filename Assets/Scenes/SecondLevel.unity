@@ -944,6 +944,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4617729288027357034, guid: 76ef754a62317c340873eaca7cc329da, type: 3}
+      propertyPath: screenShake
+      value: 
+      objectReference: {fileID: 166489921}
     - target: {fileID: 7463473436507019936, guid: 76ef754a62317c340873eaca7cc329da, type: 3}
       propertyPath: m_Name
       value: Moving Obstacle (2)
@@ -1632,6 +1636,7 @@ MonoBehaviour:
   screenShake: {fileID: 166489921}
   edgeCollider: {fileID: 263852723}
   car: {fileID: 0}
+  audioManager: {fileID: 0}
 --- !u!1 &275255349
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,6 +2028,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4617729288027357034, guid: 76ef754a62317c340873eaca7cc329da, type: 3}
+      propertyPath: screenShake
+      value: 
+      objectReference: {fileID: 166489921}
     - target: {fileID: 6003349197698820518, guid: 76ef754a62317c340873eaca7cc329da, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.08
@@ -4020,6 +4029,7 @@ MonoBehaviour:
   screenShake: {fileID: 166489921}
   edgeCollider: {fileID: 1050610235}
   car: {fileID: 0}
+  audioManager: {fileID: 0}
 --- !u!1 &1145500772
 GameObject:
   m_ObjectHideFlags: 0
@@ -4889,6 +4899,7 @@ GameObject:
   - component: {fileID: 1361057982}
   - component: {fileID: 1361057981}
   - component: {fileID: 1361057980}
+  - component: {fileID: 1361057995}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: AudioManager
@@ -6162,6 +6173,7 @@ MonoBehaviour:
   engineFast: {fileID: 1361057989}
   carHorn: {fileID: 1361057988}
   drift: {fileID: 1361057987}
+  wallHit: {fileID: 1361057995}
   voidOut: {fileID: 1361057986}
   brokenCrate: {fileID: 1361057985}
   menuClick: {fileID: 1361057984}
@@ -6184,6 +6196,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1361057995
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361057979}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6c5021fdab5aaf644b7284be4305bf62, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1367023091
 GameObject:
   m_ObjectHideFlags: 0
@@ -6761,7 +6869,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86af5cd86b958be4ca2de60d78b0cf3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMultilap: 0
   numberOfLapsTotal: 3
   numberOfLapsCrossed: 0
   startline: {fileID: 248013861}

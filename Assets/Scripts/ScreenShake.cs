@@ -11,6 +11,8 @@ public class ScreenShake : MonoBehaviour
 
     private Vector3 originalPosition;
 
+
+
     private void Start()
     {
         originalPosition = cameraTransform.localPosition;

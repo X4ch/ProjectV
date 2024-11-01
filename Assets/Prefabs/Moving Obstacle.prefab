@@ -341,3 +341,5 @@ MonoBehaviour:
   obstacle: {fileID: 1018166762768434926}
   target: {fileID: 3994099764492251789}
   movingSpeed: 7
+  boxCollider: {fileID: 5272125030281622162}
+  screenShake: {fileID: 0}
