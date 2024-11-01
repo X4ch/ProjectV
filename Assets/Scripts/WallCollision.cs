@@ -21,7 +21,6 @@ public class WallCollision : MonoBehaviour
     //}
     private void Update()
     {
-
         if (car == null)
         {
             car = GameObject.FindGameObjectWithTag("Player");

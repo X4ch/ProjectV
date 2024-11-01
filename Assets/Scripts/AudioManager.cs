@@ -93,7 +93,6 @@ public class AudioManager : MonoBehaviour
     public void Update()
     {
         volumeLevel = PlayerPrefs.GetFloat("Volume");
-        //Debug.Log("Volume:" + volumeLevel);
         foreach(var audio in gameObject.GetComponents<AudioSource>())
         {
             audio.volume = volumeLevel;

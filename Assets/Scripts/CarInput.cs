@@ -288,7 +288,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e05142e3-9406-4ca0-95b0-54ccc2350579"",
-                    ""path"": ""<Gamepad>/start"",
+                    ""path"": ""<Gamepad>/select"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -299,7 +299,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""655fdd88-4909-419d-8e0e-6cefdfe14339"",
-                    ""path"": ""<Keyboard>/enter"",
+                    ""path"": ""<Keyboard>/backspace"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

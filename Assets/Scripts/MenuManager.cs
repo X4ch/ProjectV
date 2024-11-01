@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class MenuManager : MonoBehaviour
 {
@@ -21,15 +22,29 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject validationMenuFirstButton;
     [SerializeField] private GameObject optionsMenuFirstButton;
 
+    [Header("Level and Car preview")]
+    [SerializeField] private Image levelSelectedSection;
+    [SerializeField] private Image carSelectedSection;
+    [SerializeField] private Sprite level1Image;
+    [SerializeField] private Sprite level2Image;
+    [SerializeField] private Sprite level3Image;
+    [SerializeField] private Sprite level4Image;
+    [SerializeField] private Sprite level5Image;
+    [SerializeField] private Sprite car1Image;
+    [SerializeField] private Sprite car2Image;
+    [SerializeField] private Sprite car3Image;
+
+
     [Header("Controller Guide")]
     [SerializeField] private TMP_Text controllerGuideText;
     [SerializeField] private GameObject controllerGuide;
     [SerializeField] private GameObject keyboardGuide;
 
-    [Header("Slider")]
+    [Header("Options")]
     [SerializeField] private Slider volumeSlider;
 
     private string levelToLoad;
+    private int carToLoad = 0;
     private bool isControllerGuide = true;
 
     public void LoadMainMenu(GameObject currentMenu)
@@ -62,14 +77,62 @@ public class MenuManager : MonoBehaviour
     public void LoadValidationMenu(GameObject currentMenu)
     {
         audioManager.GetComponent<AudioManager>().PlayMenuClick();
+        if (levelToLoad != null)
+        {
+            switch (levelToLoad)
+            {
+                case "FirstLevel":
+                    levelSelectedSection.sprite = level1Image;
+                    break;
+                case "SecondLevel":
+                    levelSelectedSection.sprite = level2Image;
+                    break;
+                case "ThirdLevel":
+                    levelSelectedSection.sprite = level3Image;
+                    break;
+                case "FourthLevel":
+                    levelSelectedSection.sprite = level4Image;
+                    break;
+                case "FifthLevel":
+                    levelSelectedSection.sprite = level5Image;
+                    break;
+            }
+        }
+
+        StartCoroutine(SetCarImageWithDelay());
+
         currentMenu.SetActive(false);
         validationMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(validationMenuFirstButton);
     }
 
+    private IEnumerator SetCarImageWithDelay()
+    {
+        // Optional: adjust the delay time as needed
+        yield return new WaitForSeconds(0.01f);
+
+        if (carToLoad != 0)
+        {
+            switch (carToLoad)
+            {
+                case 1:
+                    carSelectedSection.sprite = car1Image;
+                    break;
+                case 2:
+                    carSelectedSection.sprite = car2Image;
+                    break;
+                case 3:
+                    carSelectedSection.sprite = car3Image;
+                    break;
+            }
+        }
+    }
+
     public void LoadOptionsMenu(GameObject currentMenu)
     {
+        volumeSlider.onValueChanged.AddListener(delegate { VolumeChange(); });
+        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
         audioManager.GetComponent<AudioManager>().PlayMenuClick();
         currentMenu.SetActive(false);
         optionsMenu.SetActive(true);
@@ -85,13 +148,16 @@ public class MenuManager : MonoBehaviour
 
     public void SetLevelToLoad(string levelName)
     {
-        if (levelName == "") levelToLoad = null;
-        else levelToLoad = levelName;
+        levelToLoad = levelName; 
+        PlayerPrefs.SetString("Level", levelName);
+        PlayerPrefs.Save();
     }
 
     public void SetCar(int carNumber)
     {
-        //TODO
+        carToLoad = carNumber;
+        PlayerPrefs.SetInt("Car", carNumber);
+        PlayerPrefs.Save();
     }
 
     public void SwitchControllerGuide()
@@ -119,17 +185,9 @@ public class MenuManager : MonoBehaviour
         levelToLoad = null;
         Application.Quit();
     }
-
-    private void Start()
-    {
-        volumeSlider.onValueChanged.AddListener(delegate { VolumeChange(); });
-        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
-    }
-
     private void VolumeChange()
     {
         PlayerPrefs.SetFloat("Volume", volumeSlider.value);
-        PlayerPrefs.Save();
-        Debug.Log("Volume changed");
+        PlayerPrefs.Save();    
     }
 }

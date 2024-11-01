@@ -432,6 +432,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+--- !u!114 &77207283 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8560484651610840391, guid: 5c81b3cf79351a947a463281ffdd4181, type: 3}
+  m_PrefabInstance: {fileID: 77207282}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e393b9bdaf2e444ea8eebef8b42fd70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &78494814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,7 +1532,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -20
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.14682575, g: 0.7056604, b: 0.1424635, a: 1}
+  m_Color: {r: 0.26983443, g: 0.735849, b: 0.25962973, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4433,7 +4444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f362a58bf7d88347a4ae3a803a459e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenShake: {fileID: 0}
+  screenShake: {fileID: 77207283}
   edgeCollider: {fileID: 1293881139}
   car: {fileID: 0}
 --- !u!1 &1304142379
@@ -4739,7 +4750,9 @@ MonoBehaviour:
   numberOfLapsCrossed: 0
   startline: {fileID: 1133105945}
   endline: {fileID: 1133105945}
-  carPrefab: {fileID: 1228123914914350077, guid: 30e0f4fd779066642ac51fd01c900a09, type: 3}
+  car1Prefab: {fileID: 1228123914914350077, guid: 30e0f4fd779066642ac51fd01c900a09, type: 3}
+  car2Prefab: {fileID: 1228123914914350077, guid: e757647c32a48ea499340e56363231a8, type: 3}
+  car3Prefab: {fileID: 1228123914914350077, guid: 953b297ccfb6fd343b73486fae30e052, type: 3}
   isTrackStarted: 0
   trackTimer: 0
   checkpoints:
@@ -4810,22 +4823,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 347b25a4-cbe6-4b73-9cb6-c26811712b83
     m_ActionName: Car/Respawn[/SwitchProControllerHID/start,/XInputControllerWindows/start,/Keyboard/enter]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1397163160}
-        m_TargetAssemblyTypeName: TrackManager, Assembly-CSharp
-        m_MethodName: OnLaunchedRespawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f0950a52-e9c3-4cae-9985-10926f4a848a
-    m_ActionName: Car/New action
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1397163160}
@@ -5419,7 +5416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f362a58bf7d88347a4ae3a803a459e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenShake: {fileID: 0}
+  screenShake: {fileID: 77207283}
   edgeCollider: {fileID: 1502447684}
   car: {fileID: 0}
 --- !u!68 &1502447684
@@ -7637,7 +7634,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -9
-  m_Color: {r: 0.12202916, g: 0.6842565, b: 0.7433963, a: 1}
+  m_Color: {r: 0.25471687, g: 0.581151, b: 1, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:

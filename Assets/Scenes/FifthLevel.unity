@@ -5421,22 +5421,6 @@ MonoBehaviour:
     m_ActionId: 347b25a4-cbe6-4b73-9cb6-c26811712b83
     m_ActionName: Car/Respawn[/SwitchProControllerHID/start,/XInputControllerWindows/start,/Keyboard/enter]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1256659187}
-        m_TargetAssemblyTypeName: TrackManager, Assembly-CSharp
-        m_MethodName: OnLaunchedRespawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f0950a52-e9c3-4cae-9985-10926f4a848a
-    m_ActionName: Car/New action
-  - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 64d2827a-f060-481d-a524-2457e47583de
     m_ActionName: Car/Horn[/Keyboard/space]
@@ -5462,7 +5446,9 @@ MonoBehaviour:
   numberOfLapsCrossed: 0
   startline: {fileID: 757844633}
   endline: {fileID: 757844633}
-  carPrefab: {fileID: 1228123914914350077, guid: 30e0f4fd779066642ac51fd01c900a09, type: 3}
+  car1Prefab: {fileID: 1228123914914350077, guid: 30e0f4fd779066642ac51fd01c900a09, type: 3}
+  car2Prefab: {fileID: 1228123914914350077, guid: e757647c32a48ea499340e56363231a8, type: 3}
+  car3Prefab: {fileID: 1228123914914350077, guid: 953b297ccfb6fd343b73486fae30e052, type: 3}
   isTrackStarted: 0
   trackTimer: 0
   checkpoints:

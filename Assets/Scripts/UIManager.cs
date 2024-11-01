@@ -13,9 +13,6 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    //[SerializeField] private GameObject pauseMenu;
-    //[SerializeField] private GameObject gameMenu;
-
     [Header("Track Manager")]
     [SerializeField] private TrackManager trackManager;
 

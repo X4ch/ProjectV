@@ -5,8 +5,6 @@ using System.Linq;
 
 public class TrackManager : MonoBehaviour
 {
-
-    [SerializeField] bool isMultilap; // probably useless
     [SerializeField] public int numberOfLapsTotal;
     public int numberOfLapsCrossed;
 
@@ -14,11 +12,13 @@ public class TrackManager : MonoBehaviour
     [SerializeField] GameObject endline;
     private BoxCollider2D endlineCollider;
 
-    [SerializeField] GameObject carPrefab;
+    [SerializeField] GameObject car1Prefab;
+    [SerializeField] GameObject car2Prefab;
+    [SerializeField] GameObject car3Prefab;
+    private GameObject carPrefab;
     private GameObject car;
 
     public bool isTrackStarted = false; // private and Setters and Getters would be better...
-    //private bool isTrackFinished = false;
     private float trackTimerStart;
     public float trackTimer; // private and Setters and Getters would be better...
     private List<float> lapTimers;
@@ -33,8 +33,6 @@ public class TrackManager : MonoBehaviour
 
     public void CrossCheckpoint(Checkpoint checkpoint)
     {
-        Debug.Log("Checkpoint crossed");
-
         numberOfCheckpointsCrossed++;
         checkpoint.GetComponent<BoxCollider2D>().enabled = false;
         currentCheckpoint = checkpoints[numberOfCheckpointsCrossed - 1];
@@ -48,8 +46,6 @@ public class TrackManager : MonoBehaviour
 
     public void CrossEndline()
     {
-        Debug.Log("Lap finished");
-
         numberOfLapsCrossed++;
         numberOfCheckpointsCrossed = 0;
         endlineCollider.enabled = false;
@@ -72,13 +68,10 @@ public class TrackManager : MonoBehaviour
     }
     private void EndTrack()
     {
-        Debug.Log("Track finished");
         car.SetActive(false);
 
         UIManager.Instance.HideRaceUI();
         UIManager.Instance.ShowEndUI(lapTimers);
-
-        // TODO : add the menu with the timers, and the possibility to restart the track or go back to the main menu
     }
 
     public void OnRespawn()
@@ -94,14 +87,34 @@ public class TrackManager : MonoBehaviour
 
     public void OnHorn()
     {
-        Debug.Log("Horn");
         audioManager.GetComponent<AudioManager>().PlayHorn();
     }
 
-    // Start is called before the first frame update
     private void Start()
     {
         numberOfCheckpointsTotal = checkpoints.Count;
+        if (PlayerPrefs.HasKey("Car"))
+        {
+            switch (PlayerPrefs.GetInt("Car"))
+            {
+                case 1:
+                    carPrefab = car1Prefab;
+                    break;
+                case 2:
+                    carPrefab = car2Prefab;
+                    break;
+                case 3:
+                    carPrefab = car3Prefab;
+                    break;
+                default:
+                    carPrefab = car1Prefab;
+                    break;
+            }
+        }
+        else
+        {
+            carPrefab = car1Prefab;
+        }
         car = Instantiate(carPrefab, startline.transform.position, startline.transform.rotation);
 
         endlineCollider = endline.GetComponent<BoxCollider2D>();
@@ -146,7 +159,6 @@ public class TrackManager : MonoBehaviour
         isTrackStarted = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!isTrackStarted)

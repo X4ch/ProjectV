@@ -886,7 +886,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.79622644, g: 0.040562414, b: 0.040562414, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4507,7 +4507,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Color: {r: 0, g: 0.4819336, b: 1, a: 1}
+  m_Color: {r: 0.40566033, g: 0.69234186, b: 1, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
@@ -6732,22 +6732,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1454539810}
         m_TargetAssemblyTypeName: TrackManager, Assembly-CSharp
-        m_MethodName: OnLaunchedRespawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f0950a52-e9c3-4cae-9985-10926f4a848a
-    m_ActionName: Car/New action
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1454539810}
-        m_TargetAssemblyTypeName: TrackManager, Assembly-CSharp
         m_MethodName: OnHorn
         m_Mode: 1
         m_Arguments:
@@ -6778,11 +6762,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMultilap: 0
-  numberOfLapsTotal: 5
+  numberOfLapsTotal: 3
   numberOfLapsCrossed: 0
   startline: {fileID: 248013861}
   endline: {fileID: 248013861}
-  carPrefab: {fileID: 1228123914914350077, guid: 30e0f4fd779066642ac51fd01c900a09, type: 3}
+  car1Prefab: {fileID: 1228123914914350077, guid: 30e0f4fd779066642ac51fd01c900a09, type: 3}
+  car2Prefab: {fileID: 1228123914914350077, guid: e757647c32a48ea499340e56363231a8, type: 3}
+  car3Prefab: {fileID: 1228123914914350077, guid: 953b297ccfb6fd343b73486fae30e052, type: 3}
   isTrackStarted: 0
   trackTimer: 0
   checkpoints:
@@ -7543,7 +7529,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -20
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.14682575, g: 0.7056604, b: 0.1424635, a: 1}
+  m_Color: {r: 0.8919132, g: 1, b: 0.4584905, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8224,7 +8210,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
-  m_Color: {r: 0.49803922, g: 0.49803922, b: 0.49803922, a: 1}
+  m_Color: {r: 0.5471698, g: 0.5114044, b: 0.32520467, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
