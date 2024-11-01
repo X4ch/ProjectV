@@ -7,12 +7,10 @@ public class AudioManager : MonoBehaviour
 {
     [Header("Car audio")]
     public AudioSource engineIdle;
-    public AudioSource engineLow;
-    public AudioSource engineMid;
-    public AudioSource engineFast;
     public AudioSource carHorn;
     public AudioSource drift;
     public AudioSource wallHit;
+    public AudioSource engineTest;
 
     [Header("Environment audio")]
     public AudioSource voidOut;
@@ -27,25 +25,24 @@ public class AudioManager : MonoBehaviour
 
     private float volumeLevel;
 
+    public void PlayEngineTest()
+    {
+        if (!engineTest.isPlaying) { engineTest.loop = true;  engineTest.Play();} 
+    }
+
+    public void ChangeEnginePitch(float pitch)
+    {
+        engineTest.pitch = pitch;
+    }
+
+    public void StopEngineTest()
+    {
+        if (engineTest.isPlaying) { engineTest.loop = false; engineTest.Stop();}
+    }
 
     public void PlayEngineIdle()
     {
         if (!engineIdle.isPlaying) { engineIdle.Play(); }
-    }
-
-    public void PlayEngineLow()
-    {
-        if (!engineLow.isPlaying) { engineLow.Play(); }
-    }
-
-    public void PlayEngineMid()
-    {
-        if (!engineMid.isPlaying) { engineMid.Play(); }
-    }
-
-    public void PlayEngineFast()
-    {
-        if (!engineFast.isPlaying) { engineFast.Play(); }
     }
 
     public void PlayHorn()
@@ -55,7 +52,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlayDrift()
     {
-        if (!drift.isPlaying) { drift.Play(); }
+        if (!drift.isPlaying) { drift.loop = true; drift.pitch = 0.9f; drift.Play(); }
+    }
+
+    public void StopDrift()
+    {
+        if (drift.isPlaying) { drift.loop = false;  drift.Stop(); }
     }
 
     public void PlayWallHit()

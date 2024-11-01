@@ -28,6 +28,7 @@ public class CarController : MonoBehaviour
     private float velocityVsUp;
     private float rotationAngle;
 
+    private bool isDrifting = false;
 
     public float getVelocity()
     {
@@ -98,7 +99,12 @@ public class CarController : MonoBehaviour
             float rotationChange = Mathf.Abs(rotationAngle - initialRotationAngle);
             if (Mathf.Abs(steeringInput) > 0 && rotationChange > driftAngleThreshold)
             {
+                isDrifting = true;
                 SpawnDriftMark();
+            }
+            else
+            {
+                isDrifting = false;
             }
         }
 
@@ -108,21 +114,41 @@ public class CarController : MonoBehaviour
     private void Update()
     {
         //Debug.Log("Speed:" + velocityVsUp);
+        //if (velocityVsUp <= 0.1)
+        //{
+        //    audioManager.GetComponent<AudioManager>().PlayEngineIdle();
+        //}
+        //else if (velocityVsUp < maxSpeed / 3 && velocityVsUp > 0)
+        //{
+        //    audioManager.GetComponent<AudioManager>().PlayEngineLow();
+        //}
+        //else if (velocityVsUp >= maxSpeed / 3 && velocityVsUp < maxSpeed * 2 / 3)
+        //{
+        //    audioManager.GetComponent<AudioManager>().PlayEngineMid();
+        //}
+        //else if (velocityVsUp >= maxSpeed * 2 / 3)
+        //{
+        //    audioManager.GetComponent<AudioManager>().PlayEngineFast();
+        //}
+
         if (velocityVsUp <= 0.1)
         {
+            audioManager.GetComponent<AudioManager>().StopEngineTest();
             audioManager.GetComponent<AudioManager>().PlayEngineIdle();
         }
-        else if (velocityVsUp < maxSpeed / 3 && velocityVsUp > 0)
+        else
         {
-            audioManager.GetComponent<AudioManager>().PlayEngineLow();
+            audioManager.GetComponent<AudioManager>().ChangeEnginePitch(1.5f * velocityVsUp / maxSpeed);
+            audioManager.GetComponent<AudioManager>().PlayEngineTest();
         }
-        else if (velocityVsUp >= maxSpeed / 3 && velocityVsUp < maxSpeed * 2 / 3)
+
+        if (isDrifting)
         {
-            audioManager.GetComponent<AudioManager>().PlayEngineMid();
+            audioManager.GetComponent<AudioManager>().PlayDrift();
         }
-        else if (velocityVsUp >= maxSpeed * 2 / 3)
+        else
         {
-            audioManager.GetComponent<AudioManager>().PlayEngineFast();
+            audioManager.GetComponent<AudioManager>().StopDrift();
         }
     }
 
@@ -180,9 +206,7 @@ public class CarController : MonoBehaviour
 
     private void SpawnDriftMark()
     {
-        GameObject driftMark = Instantiate(driftMarkPrefab, transform.position, transform.rotation);
-        audioManager.GetComponent<AudioManager>().PlayDrift(); 
-        
+        GameObject driftMark = Instantiate(driftMarkPrefab, transform.position, transform.rotation);        
         Destroy(driftMark, driftMarkLifetime);
     }
 
