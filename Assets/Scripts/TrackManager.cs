@@ -71,6 +71,7 @@ public class TrackManager : MonoBehaviour
     {
         car.SetActive(false);
         isTrackRunning = false;
+        canPause = false;
 
         UIManager.Instance.HideRaceUI();
         UIManager.Instance.ShowEndUI(lapTimers);
