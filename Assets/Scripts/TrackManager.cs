@@ -19,6 +19,7 @@ public class TrackManager : MonoBehaviour
     private GameObject car;
 
     public bool isTrackRunning = false; // private and Setters and Getters would be better...
+    private bool canPause = false;
     private float trackTimerStart;
     public float trackTimer; // private and Setters and Getters would be better...
     private List<float> lapTimers;
@@ -96,6 +97,25 @@ public class TrackManager : MonoBehaviour
         audioManager.GetComponent<AudioManager>().PlayHorn();
     }
 
+    public void OnTogglePause()
+    {
+        if (!canPause) return;
+
+        if (isTrackRunning)
+        {
+            isTrackRunning = false;
+            Time.timeScale = 0f;
+            UIManager.Instance.PauseGame();
+        }
+        else
+        {
+            isTrackRunning = true;
+            Time.timeScale = 1f;
+            UIManager.Instance.ResumeGame();
+        }
+    }
+
+
     private void Start()
     {
         numberOfCheckpointsTotal = checkpoints.Count;
@@ -163,6 +183,7 @@ public class TrackManager : MonoBehaviour
         lapTimers = new List<float>();
         trackTimerStart = Time.time;
         isTrackRunning = true;
+        canPause = true;
     }
 
     void Update()

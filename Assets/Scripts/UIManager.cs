@@ -16,6 +16,9 @@ public class UIManager : MonoBehaviour
     [Header("Track Manager")]
     [SerializeField] private TrackManager trackManager;
 
+    [Header("Audio Manager")]
+    [SerializeField] public GameObject audioManager;
+
     [Header("Starting UI")]
     [SerializeField] private GameObject startUI;
     [SerializeField] private TMP_Text countdownText;
@@ -38,7 +41,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text finalTimeText;
     [SerializeField] private List<TMP_Text> lapTimerTexts;
 
-    [SerializeField] public GameObject audioManager;
+    [Header("Pause UI")]
+    [SerializeField] private GameObject pauseUI;
+    [SerializeField] private GameObject pauseUIFirstButton;
+    [SerializeField] private GameObject pauseTimeText;
 
     private void Awake()
     {
@@ -136,16 +142,43 @@ public class UIManager : MonoBehaviour
     {
         endUI.SetActive(false);
     }
+    public void ShowPauseUI()
+    {
+        pauseUI.SetActive(true);
+        pauseTimeText.GetComponent<TMP_Text>().text = "Time : " + DisplayTime(trackManager.trackTimer);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(pauseUIFirstButton);
+    }
+
+    public void HidePauseUI()
+    {
+        pauseUI.SetActive(false);
+    }
+
+    public void PauseGame()
+    {
+        ShowPauseUI();
+        HideRaceUI();
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        HidePauseUI();
+        ShowRaceUI();
+        Time.timeScale = 1;
+    }
 
     public void RestartGame()
     {
-        audioManager.GetComponent<AudioManager>().PlayMenuClick();
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
     }
 
     public void ReturnToMenu()
     {
-        audioManager.GetComponent<AudioManager>().PlayMenuClick();
+        Time.timeScale = 1;
         SceneManager.LoadScene("MenuScene");
     }
 
