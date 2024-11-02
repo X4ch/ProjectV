@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ScreenShake : MonoBehaviour
@@ -10,8 +9,6 @@ public class ScreenShake : MonoBehaviour
     public float speedToShakeMultiplier = 0.1f; // Multiplier to scale the shake with speed.
 
     private Vector3 originalPosition;
-
-
 
     private void Start()
     {
@@ -33,10 +30,10 @@ public class ScreenShake : MonoBehaviour
         while (elapsedTime < duration)
         {
             Vector3 randomPoint = originalPosition + Random.insideUnitSphere * magnitude;
-
             cameraTransform.localPosition = new Vector3(randomPoint.x, randomPoint.y, originalPosition.z);
 
-            elapsedTime += Time.deltaTime;
+            // Use unscaled time so shake stops when Time.timeScale is 0
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
 
