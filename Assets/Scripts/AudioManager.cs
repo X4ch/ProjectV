@@ -57,7 +57,7 @@ public class AudioManager : MonoBehaviour
 
     public void StopDrift()
     {
-        if (drift.isPlaying) { drift.loop = false;  drift.Stop(); }
+        if (drift.isPlaying) { drift.loop = false; drift.Stop(); }
     }
 
     public void PlayWallHit()

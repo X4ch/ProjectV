@@ -72,9 +72,6 @@ public class TrackManager : MonoBehaviour
         car.SetActive(false);
         isTrackRunning = false;
 
-        audioManager.GetComponent<AudioManager>().StopDrift();
-        audioManager.GetComponent<AudioManager>().StopEngineTest();
-
         UIManager.Instance.HideRaceUI();
         UIManager.Instance.ShowEndUI(lapTimers);
     }
@@ -103,6 +100,7 @@ public class TrackManager : MonoBehaviour
 
         if (isTrackRunning)
         {
+            
             isTrackRunning = false;
             Time.timeScale = 0f;
             UIManager.Instance.PauseGame();

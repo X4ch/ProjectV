@@ -29,6 +29,7 @@ public class CarController : MonoBehaviour
     private float rotationAngle;
 
     private bool isDrifting = false;
+    private bool isTrackRuning = false;
 
     public float getVelocity()
     {
@@ -131,25 +132,36 @@ public class CarController : MonoBehaviour
         //    audioManager.GetComponent<AudioManager>().PlayEngineFast();
         //}
 
-        if (velocityVsUp <= 0.1)
+        isTrackRuning = trackManager.isTrackRunning;
+
+        if (isTrackRuning)
+        {
+            if (velocityVsUp <= 0.1)
+            {
+                audioManager.GetComponent<AudioManager>().StopEngineTest();
+                audioManager.GetComponent<AudioManager>().PlayEngineIdle();
+            }
+            else
+            {
+                audioManager.GetComponent<AudioManager>().ChangeEnginePitch(1.5f * velocityVsUp / maxSpeed);
+                audioManager.GetComponent<AudioManager>().PlayEngineTest();
+            }
+
+            if (isDrifting)
+            {
+                audioManager.GetComponent<AudioManager>().PlayDrift();
+            }
+            else
+            {
+                audioManager.GetComponent<AudioManager>().StopDrift();
+            }
+        }
+        else
         {
             audioManager.GetComponent<AudioManager>().StopEngineTest();
-            audioManager.GetComponent<AudioManager>().PlayEngineIdle();
-        }
-        else
-        {
-            audioManager.GetComponent<AudioManager>().ChangeEnginePitch(1.5f * velocityVsUp / maxSpeed);
-            audioManager.GetComponent<AudioManager>().PlayEngineTest();
-        }
-
-        if (isDrifting)
-        {
-            audioManager.GetComponent<AudioManager>().PlayDrift();
-        }
-        else
-        {
             audioManager.GetComponent<AudioManager>().StopDrift();
         }
+        
     }
 
     private void ApplyEngineForce()

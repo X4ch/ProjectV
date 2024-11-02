@@ -157,6 +157,8 @@ public class UIManager : MonoBehaviour
 
     public void PauseGame()
     {
+        audioManager.GetComponent<AudioManager>().StopEngineTest();
+        audioManager.GetComponent<AudioManager>().StopDrift();
         ShowPauseUI();
         HideRaceUI();
         Time.timeScale = 0;
