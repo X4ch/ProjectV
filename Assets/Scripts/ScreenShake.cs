@@ -18,9 +18,8 @@ public class ScreenShake : MonoBehaviour
     public void TriggerShake(float speed)
     {
         // Scale the shake duration and magnitude based on the speed.
-        float shakeDuration = baseShakeDuration + (speed * speedToShakeMultiplier);
         float shakeMagnitude = baseShakeMagnitude + (speed * speedToShakeMultiplier);
-        StartCoroutine(Shake(shakeDuration, shakeMagnitude));
+        StartCoroutine(Shake(baseShakeDuration, shakeMagnitude));
     }
 
     private IEnumerator Shake(float duration, float magnitude)
