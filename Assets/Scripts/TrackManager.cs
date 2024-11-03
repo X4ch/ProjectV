@@ -73,6 +73,9 @@ public class TrackManager : MonoBehaviour
         isTrackRunning = false;
         canPause = false;
 
+        audioManager.GetComponent<AudioManager>().StopEngineTest();
+        audioManager.GetComponent<AudioManager>().StopDrift();
+
         UIManager.Instance.HideRaceUI();
         UIManager.Instance.ShowEndUI(lapTimers);
     }
