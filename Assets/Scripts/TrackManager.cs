@@ -36,7 +36,7 @@ public class TrackManager : MonoBehaviour
     {
         numberOfCheckpointsCrossed++;
         checkpoint.GetComponent<BoxCollider2D>().enabled = false;
-        currentCheckpoint = checkpoints[numberOfCheckpointsCrossed - 1];
+        currentCheckpoint = checkpoint.gameObject;
     }
 
     private void AddLapTimer()
