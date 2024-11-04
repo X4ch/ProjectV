@@ -39,6 +39,7 @@ public class CarController : MonoBehaviour
     public void setVelocity(float velocity)
     {
         velocityVsUp = velocity;
+        carRigidbody2D.velocity = Vector2.zero;
     }
 
     public float getRotation()

@@ -83,8 +83,16 @@ public class TrackManager : MonoBehaviour
     public void OnRespawn()
     {
         if (!isTrackRunning) return;
-        Destroy(car);
-        car = Instantiate(carPrefab, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);
+
+        car.transform.position = currentCheckpoint.transform.position;
+
+        var carController = car.GetComponent<CarController>();
+
+        carController.setVelocity(0);
+        carController.setRotation(currentCheckpoint.transform.rotation.eulerAngles.z);
+
+        //Destroy(car);
+        //car = Instantiate(carPrefab, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);
     }
 
     public float GetCarVelocity()
@@ -190,6 +198,8 @@ public class TrackManager : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Car speed: " + car.GetComponent<CarController>().getVelocity());
+
         if (!isTrackRunning) return;
 
         trackTimer = Time.time - trackTimerStart;
