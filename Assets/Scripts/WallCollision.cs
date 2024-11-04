@@ -25,7 +25,7 @@ public class WallCollision : MonoBehaviour
                 audioManager.GetComponent<AudioManager>().PlayWallHit();
             }
             screenShake.TriggerShake(speed);
-            Rumble.Instance.RumblePulse(0.25f, 1, 0.5f);
+            Rumble.Instance.RumblePulse(0.1f, 0.4f, 0.5f);
         }
     }
 }
