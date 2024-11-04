@@ -25,9 +25,12 @@ public class WallCollision : MonoBehaviour
         if (edgeCollider.IsTouching(car.GetComponent<BoxCollider2D>()))
         {
             float speed = car.GetComponent<CarController>().getVelocity();
-            //Debug.Log("speed: " + speed);
-            if (speed > 10) { audioManager.GetComponent<AudioManager>().PlayWallHit(); }
+            if (speed > 10) 
+            { 
+                audioManager.GetComponent<AudioManager>().PlayWallHit();
+            }
             screenShake.TriggerShake(speed);
+            Rumble.Instance.RumblePulse(10, 40, 10);
         }
     }
 }

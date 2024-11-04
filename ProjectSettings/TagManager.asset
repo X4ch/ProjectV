@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - AudioManager
+  - RumbleManager
   layers:
   - Default
   - TransparentFX

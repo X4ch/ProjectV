@@ -198,7 +198,7 @@ public class TrackManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Car speed: " + car.GetComponent<CarController>().getVelocity());
+        //Debug.Log("Car speed: " + car.GetComponent<CarController>().getVelocity());
 
         if (!isTrackRunning) return;
 
