@@ -10,11 +10,6 @@ public class WallCollision : MonoBehaviour
     [SerializeField] GameObject car;
     [SerializeField] GameObject audioManager;
 
-    private void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("AudioManager");
-    }
-
     private void Update()
     {
         if (car == null)
@@ -25,12 +20,12 @@ public class WallCollision : MonoBehaviour
         if (edgeCollider.IsTouching(car.GetComponent<BoxCollider2D>()))
         {
             float speed = car.GetComponent<CarController>().getVelocity();
-            if (speed > 10) 
+            if (Mathf.Abs(speed) > 10) 
             { 
                 audioManager.GetComponent<AudioManager>().PlayWallHit();
             }
             screenShake.TriggerShake(speed);
-            Rumble.Instance.RumblePulse(10, 40, 10);
+            Rumble.Instance.RumblePulse(0.25f, 1, 0.5f);
         }
     }
 }

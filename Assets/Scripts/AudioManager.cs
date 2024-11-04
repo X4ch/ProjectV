@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -15,6 +16,7 @@ public class AudioManager : MonoBehaviour
     [Header("Environment audio")]
     public AudioSource voidOut;
     public AudioSource brokenCrate;
+    public AudioSource teleport;
 
     [Header("Menu sounds")]
     public AudioSource menuClick;
@@ -80,6 +82,11 @@ public class AudioManager : MonoBehaviour
         if (!menuClick.isPlaying) { menuClick.Play(); }
     }
 
+    public void PlayTeleport()
+    {
+        if (!teleport.isPlaying) { teleport.Play(); }
+    }
+
     public void PlayAudio3()
     {
         if (!audio3.isPlaying) { audio3.Play(); }
@@ -104,12 +111,17 @@ public class AudioManager : MonoBehaviour
         volumeLevel = PlayerPrefs.GetFloat("Volume");
         foreach(var audio in gameObject.GetComponents<AudioSource>())
         {
-            var match = Regex.Match(audio.clip.name, "(engine)|(drift)|(Race)|(Impact)", RegexOptions.IgnoreCase);
+            var match = Regex.Match(audio.clip.name, "(engine)|(Race)|(Impact)", RegexOptions.IgnoreCase);
+            var match2 = Regex.Match(audio.clip.name, "(Skid)", RegexOptions.IgnoreCase);
             //Debug.Log(match.Success + " " + audio.clip.name);
             
             if (match.Success)
             {
                 audio.volume = volumeLevel / 3;
+            }
+            else if (match2.Success)
+            {
+                audio.volume = volumeLevel / 5;
             }
             else
             {

@@ -173,13 +173,14 @@ public class UIManager : MonoBehaviour
 
     public void RestartGame()
     {
+        audioManager.GetComponent<AudioManager>().PlayMenuClick();
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        
     }
 
     public void ReturnToMenu()
     {
+        audioManager.GetComponent<AudioManager>().PlayMenuClick();
         Time.timeScale = 1;
         SceneManager.LoadScene("MenuScene");
     }

@@ -660,6 +660,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &112927307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 112927309}
+  - component: {fileID: 112927308}
+  m_Layer: 0
+  m_Name: GamepadeRumble
+  m_TagString: RumbleManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &112927308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112927307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0957ef03abc35941807f54bfa839d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &112927309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112927307}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0538688, y: 4.7753787, z: -10.485569}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &115542856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2246,7 +2290,7 @@ MonoBehaviour:
   screenShake: {fileID: 166489921}
   edgeCollider: {fileID: 263852723}
   car: {fileID: 0}
-  audioManager: {fileID: 0}
+  audioManager: {fileID: 1361057979}
 --- !u!1 &272655340
 GameObject:
   m_ObjectHideFlags: 0
@@ -8584,7 +8628,7 @@ MonoBehaviour:
   screenShake: {fileID: 166489921}
   edgeCollider: {fileID: 1050610235}
   car: {fileID: 0}
-  audioManager: {fileID: 0}
+  audioManager: {fileID: 1361057979}
 --- !u!1 &1066322566
 GameObject:
   m_ObjectHideFlags: 0
@@ -11349,6 +11393,7 @@ MonoBehaviour:
   engineTest: {fileID: 1361057996}
   voidOut: {fileID: 1361057986}
   brokenCrate: {fileID: 1361057985}
+  teleport: {fileID: 0}
   menuClick: {fileID: 1361057984}
   audio3: {fileID: 1361057983}
   audio2: {fileID: 1361057982}
@@ -18272,3 +18317,4 @@ SceneRoots:
   - {fileID: 2080212879}
   - {fileID: 1361057994}
   - {fileID: 166489920}
+  - {fileID: 112927309}

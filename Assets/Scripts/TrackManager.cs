@@ -112,13 +112,13 @@ public class TrackManager : MonoBehaviour
 
         if (isTrackRunning)
         {
-            
             isTrackRunning = false;
             Time.timeScale = 0f;
             UIManager.Instance.PauseGame();
         }
         else
         {
+            audioManager.GetComponent<AudioManager>().PlayMenuClick();
             isTrackRunning = true;
             Time.timeScale = 1f;
             UIManager.Instance.ResumeGame();

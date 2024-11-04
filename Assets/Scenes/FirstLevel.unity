@@ -6639,6 +6639,7 @@ MonoBehaviour:
   engineTest: {fileID: 757015069}
   voidOut: {fileID: 757015059}
   brokenCrate: {fileID: 757015058}
+  teleport: {fileID: 0}
   menuClick: {fileID: 757015057}
   audio3: {fileID: 757015056}
   audio2: {fileID: 757015055}
@@ -10642,8 +10643,7 @@ MonoBehaviour:
   screenShake: {fileID: 77207283}
   edgeCollider: {fileID: 1293881139}
   car: {fileID: 0}
-  audioManager: {fileID: 0}
-  rumbleManager: {fileID: 0}
+  audioManager: {fileID: 757015052}
 --- !u!1 &1304142379
 GameObject:
   m_ObjectHideFlags: 0
@@ -12294,8 +12294,7 @@ MonoBehaviour:
   screenShake: {fileID: 77207283}
   edgeCollider: {fileID: 1502447684}
   car: {fileID: 0}
-  audioManager: {fileID: 0}
-  rumbleManager: {fileID: 0}
+  audioManager: {fileID: 757015052}
 --- !u!68 &1502447684
 EdgeCollider2D:
   m_ObjectHideFlags: 0

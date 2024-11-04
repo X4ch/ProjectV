@@ -8,6 +8,13 @@ public class Teleporter : MonoBehaviour
     [SerializeField] GameObject carPrefab;
     [SerializeField] GameObject exitPortal;
 
+    [SerializeField] GameObject audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject carObject = collision.gameObject;
@@ -15,6 +22,9 @@ public class Teleporter : MonoBehaviour
 
         if (car != null)
         {
+
+            audioManager.GetComponent<AudioManager>().PlayTeleport();
+
             carObject.transform.position = exitPortal.transform.position;
 
             Rigidbody2D carRigidbody2D = carObject.GetComponent<Rigidbody2D>();
