@@ -31,6 +31,10 @@ public class CarController : MonoBehaviour
     private bool isDrifting = false;
     private bool isTrackRuning = false;
 
+    // IOT :
+    public bool IsOnPlatform { get; set; } = true;
+    public bool IsOnMovingPlatform { get; set; } = false;
+
     public float getVelocity()
     {
         return velocityVsUp;

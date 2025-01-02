@@ -210,4 +210,17 @@ public class TrackManager : MonoBehaviour
         }
     }
 
+    public void Shockwave()
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(car.transform.position, 5f); // 5f is the radius
+        foreach (var hitCollider in hitColliders)
+        {
+            BreakableBox breakableBox = hitCollider.GetComponent<BreakableBox>();
+            if (breakableBox != null)
+            {
+                breakableBox.Break();
+            }
+        }
+    }
+
 }

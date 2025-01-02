@@ -189,11 +189,6 @@ MonoBehaviour:
   driftMarkPrefab: {fileID: 1831465459988804170, guid: 62c0ef199471881429e12bf100fd717b, type: 3}
   driftAngleThreshold: 2.9
   driftMarkLifetime: 3
-  driftSound: {fileID: 0}
-  engineIdle: {fileID: 0}
-  engineSlow: {fileID: 0}
-  engineMid: {fileID: 0}
-  engineFast: {fileID: 0}
 --- !u!1 &1828466994089624771
 GameObject:
   m_ObjectHideFlags: 0

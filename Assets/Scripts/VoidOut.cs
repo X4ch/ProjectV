@@ -12,10 +12,16 @@ public class VoidOut : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("AudioManager");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<CarController>() != null)
+        CarController car = collision.gameObject.GetComponent<CarController>();
+        if (car != null)
         {
+            if (car.IsOnPlatform || car.IsOnMovingPlatform)
+            {
+                return;
+            }
+
             Debug.Log("Fall in void");
             audioManager.GetComponent<AudioManager>().PlayVoidOut();
             trackManager.GetComponent<TrackManager>().OnRespawn();
