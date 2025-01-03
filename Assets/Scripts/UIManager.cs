@@ -46,6 +46,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject pauseUIFirstButton;
     [SerializeField] private GameObject pauseTimeText;
 
+    [Header("IOT")]
+    [SerializeField] private SerialHandler serialHandler;
+
     private void Awake()
     {
         if (Instance == null)
@@ -75,6 +78,8 @@ public class UIManager : MonoBehaviour
             timerText.text = DisplayTime(trackManager.trackTimer);
             speedText.text = string.Format("{0:00} km/h", Mathf.RoundToInt(Mathf.Abs(trackManager.GetCarVelocity() * 3.6f)));
             lapText.text = string.Format("{0}/{1}", trackManager.numberOfLapsCrossed + 1, trackManager.numberOfLapsTotal);
+            if (serialHandler == null) return;
+            serialHandler.SetSpeed(Mathf.RoundToInt(Mathf.Abs(trackManager.GetCarVelocity() * 3.6f)));
         }
     }
 
@@ -86,16 +91,27 @@ public class UIManager : MonoBehaviour
     {
         audioManager.GetComponent<AudioManager>().PlayAudio3();
         circle_3.GetComponent<UnityEngine.UI.Image>().color = redOn;
+        //IOT :
+        if (serialHandler == null) return;
+        serialHandler.SetRedLed(true);
     }
     public void Light2()
     {
         audioManager.GetComponent<AudioManager>().PlayAudio2();
         circle_2.GetComponent<UnityEngine.UI.Image>().color = redOn;
+        //IOT :
+        if (serialHandler == null) return;
+        serialHandler.SetRedLed(false);
+        serialHandler.SetOrangeLed(true);
     }
     public void Light1()
     {
         audioManager.GetComponent<AudioManager>().PlayAudio1();
         circle_1.GetComponent<UnityEngine.UI.Image>().color = redOn;
+        //IOT :
+        if (serialHandler == null) return;
+        serialHandler.SetOrangeLed(false);
+        serialHandler.SetGreenLed(true);
     }
 
     public void LightAll()
@@ -104,6 +120,20 @@ public class UIManager : MonoBehaviour
         circle_3.GetComponent<UnityEngine.UI.Image>().color = greenOn;
         circle_2.GetComponent<UnityEngine.UI.Image>().color = greenOn;
         circle_1.GetComponent<UnityEngine.UI.Image>().color = greenOn;
+
+        //IOT :
+        if (serialHandler == null) return;
+        serialHandler.SetOrangeLed(true);
+        serialHandler.SetRedLed(true);
+    }
+
+    public void UnlightAll()
+    {
+        //IOT :
+        if (serialHandler == null) return;
+        serialHandler.SetGreenLed(false);
+        serialHandler.SetOrangeLed(false);
+        serialHandler.SetRedLed(false);
     }
 
     public void HideStartUI()

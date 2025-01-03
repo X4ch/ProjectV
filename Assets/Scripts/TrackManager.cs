@@ -184,6 +184,7 @@ public class TrackManager : MonoBehaviour
         StartGame();
 
         yield return new WaitForSeconds(1);
+        UIManager.Instance.UnlightAll();
         UIManager.Instance.HideStartUI();
         UIManager.Instance.ShowRaceUI();
     }

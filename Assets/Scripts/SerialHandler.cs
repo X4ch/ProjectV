@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class SerialHandler : MonoBehaviour
 {
-
     private SerialPort _serial;
 
     // Common default serial device on a Windows machine
@@ -61,6 +60,33 @@ public class SerialHandler : MonoBehaviour
         }
         movingPlatform.Moving(x, y);
     }
+
+    public void SetGreenLed(bool newState)
+    {
+        if (!_serial.IsOpen) return;
+        _serial.WriteLine(newState ? "GREEN LED ON" : "GREEN LED OFF");
+    }
+
+    public void SetOrangeLed(bool newState)
+    {
+        if (!_serial.IsOpen) return;
+        _serial.WriteLine(newState ? "ORANGE LED ON" : "ORANGE LED OFF");
+    }
+
+    public void SetRedLed(bool newState)
+    {
+        if (!_serial.IsOpen) return;
+        _serial.WriteLine(newState ? "RED LED ON" : "RED LED OFF");
+    }
+
+    public void SetSpeed(float speed)
+    {
+        if (!_serial.IsOpen) return;
+        string speedMessage = $"speed {speed:F2}\n";
+        _serial.Write(speedMessage);
+    }
+
+
     private void OnDestroy()
     {
         if (!_serial.IsOpen) return;

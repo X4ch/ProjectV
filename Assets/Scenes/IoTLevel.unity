@@ -1518,6 +1518,7 @@ MonoBehaviour:
   pauseUI: {fileID: 1580328602}
   pauseUIFirstButton: {fileID: 30936995}
   pauseTimeText: {fileID: 1357228749}
+  serialHandler: {fileID: 746777522}
 --- !u!4 &149893988
 Transform:
   m_ObjectHideFlags: 0
