@@ -45,38 +45,41 @@ public class SerialHandler : MonoBehaviour
         switch (messageParts[0])
         {
             case "button":
+                Debug.Log("Button pressed");
                 trackManager.Shockwave();
                 break;
             case "x":
                 x = float.Parse(messageParts[1], CultureInfo.InvariantCulture);
+                if (x < 0.1f && x > -0.1f) x = 0;
                 break;
 
             case "y":
                 y = float.Parse(messageParts[1], CultureInfo.InvariantCulture);
+                if (y < 0.1f && y > -0.1f) y = 0;
                 break;
             default:
-                Debug.Log($"Unknown message: {message}");
+                // Debug.Log($"Unknown message: {message}");
                 break;
         }
-        movingPlatform.Moving(x, y);
+        movingPlatform.Moving(x/2, y/2);
     }
 
     public void SetGreenLed(bool newState)
     {
         if (!_serial.IsOpen) return;
-        _serial.WriteLine(newState ? "GREEN LED ON" : "GREEN LED OFF");
+        _serial.WriteLine(newState ? "GON" : "GOFF");
     }
 
     public void SetOrangeLed(bool newState)
     {
         if (!_serial.IsOpen) return;
-        _serial.WriteLine(newState ? "ORANGE LED ON" : "ORANGE LED OFF");
+        _serial.WriteLine(newState ? "OON" : "OOFF");
     }
 
     public void SetRedLed(bool newState)
     {
         if (!_serial.IsOpen) return;
-        _serial.WriteLine(newState ? "RED LED ON" : "RED LED OFF");
+        _serial.WriteLine(newState ? "RON" : "ROFF");
     }
 
     public void SetSpeed(float speed)

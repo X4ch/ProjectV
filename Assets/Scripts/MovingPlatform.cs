@@ -26,6 +26,7 @@ public class MovingPlatform : MonoBehaviour
     public void Moving(float x, float y)
     {
         transform.position += new Vector3(x, y, 0);
+        if (car == null) return;
         if (car.IsOnMovingPlatform)
         {
             car.transform.position += new Vector3(x, y, 0);

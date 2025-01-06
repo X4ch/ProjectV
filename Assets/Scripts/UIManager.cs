@@ -154,6 +154,10 @@ public class UIManager : MonoBehaviour
     public void ShowEndUI(List<float> lapTimers)
     {
         endUI.SetActive(true);
+
+        // IOT :
+        //UnlightAll();
+
         finalTimeText.text = string.Format("Time : " + DisplayTime(lapTimers.Sum()));
         for (int i = 0; i < lapTimers.Count; i++)
         {

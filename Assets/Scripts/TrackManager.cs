@@ -181,10 +181,11 @@ public class TrackManager : MonoBehaviour
 
         UIManager.Instance.DisplayCountdown("Go !");
         UIManager.Instance.LightAll();
+        UIManager.Instance.UnlightAll();
         StartGame();
 
         yield return new WaitForSeconds(1);
-        UIManager.Instance.UnlightAll();
+        
         UIManager.Instance.HideStartUI();
         UIManager.Instance.ShowRaceUI();
     }
