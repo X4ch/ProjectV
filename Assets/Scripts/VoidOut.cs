@@ -22,7 +22,6 @@ public class VoidOut : MonoBehaviour
                 return;
             }
 
-            Debug.Log("Fall in void");
             audioManager.GetComponent<AudioManager>().PlayVoidOut();
             trackManager.GetComponent<TrackManager>().OnRespawn();
         }

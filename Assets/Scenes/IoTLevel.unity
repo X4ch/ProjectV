@@ -5664,7 +5664,7 @@ GameObject:
   - component: {fileID: 685917271}
   - component: {fileID: 685917269}
   - component: {fileID: 685917272}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform zone (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5715,12 +5715,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 15.440395, y: 28.533827}
-      - {x: -4.7521667, y: 28.49402}
-      - {x: -4.929489, y: 9.669771}
-      - {x: -3.2386627, y: 9.642243}
-      - {x: 13.30163, y: 9.49556}
-      - {x: 15.585884, y: 9.706602}
+    - - {x: 13.390583, y: 28.06796}
+      - {x: -2.516014, y: 27.841808}
+      - {x: -2.506981, y: 11.533236}
+      - {x: -1.3751984, y: 11.412536}
+      - {x: 13.3948, y: 11.359024}
+      - {x: 13.349724, y: 14.085745}
   m_UseDelaunayMesh: 0
 --- !u!4 &685917271
 Transform:
@@ -6311,7 +6311,7 @@ Transform:
   m_GameObject: {fileID: 748491726}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.6, y: 23.208004, z: 0}
+  m_LocalPosition: {x: 7, y: 23.208004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7623,7 +7623,7 @@ GameObject:
   - component: {fileID: 888168131}
   - component: {fileID: 888168130}
   - component: {fileID: 888168128}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7674,11 +7674,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -43.020588, y: 20.19494}
-      - {x: -86.38031, y: 20.31748}
-      - {x: -86.24572, y: 1.5935163}
-      - {x: -64.716835, y: 1.3184433}
-      - {x: -43.45462, y: 1.619607}
+    - - {x: -43.300114, y: 18.051958}
+      - {x: -83.9578, y: 18.081327}
+      - {x: -83.82322, y: 3.6433277}
+      - {x: -64.90319, y: 3.5545998}
+      - {x: -43.361446, y: 3.7625914}
       - {x: -43.24972, y: 3.9048576}
   m_UseDelaunayMesh: 0
 --- !u!114 &888168130
@@ -13243,7 +13243,7 @@ GameObject:
   - component: {fileID: 1412036061}
   - component: {fileID: 1412036059}
   - component: {fileID: 1412036062}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform zone (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13294,14 +13294,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 22.505287, y: -0.6971388}
-      - {x: 22.823065, y: 27.499268}
-      - {x: -47.392418, y: 27.382103}
-      - {x: -47.253372, y: 10.457229}
-      - {x: 3.780672, y: 11.064703}
-      - {x: 3.7133389, y: -18.254608}
-      - {x: 59.54788, y: -18.206814}
-      - {x: 59.4113, y: -0.41483688}
+    - - {x: 21.917643, y: -1.788476}
+      - {x: 21.899626, y: 26.995575}
+      - {x: -46.552925, y: 26.962357}
+      - {x: -46.58178, y: 11.548567}
+      - {x: 4.452263, y: 11.652348}
+      - {x: 4.5528297, y: -17.33117}
+      - {x: 59.12813, y: -17.115475}
+      - {x: 59.15946, y: -1.8419724}
   m_UseDelaunayMesh: 0
 --- !u!4 &1412036061
 Transform:
@@ -16297,18 +16297,6 @@ MonoBehaviour:
     m_ActionName: Car/Respawn[/SwitchProControllerHID/start,/XInputControllerWindows/start,/Keyboard/enter]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1703094436}
-        m_TargetAssemblyTypeName: TrackManager, Assembly-CSharp
-        m_MethodName: OnHorn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1703094436}
         m_TargetAssemblyTypeName: TrackManager, Assembly-CSharp
         m_MethodName: Shockwave
@@ -20270,7 +20258,7 @@ GameObject:
   - component: {fileID: 2142478226}
   - component: {fileID: 2142478224}
   - component: {fileID: 2142478227}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform zone (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20321,12 +20309,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 12.9772, y: 23.255533}
-      - {x: -5.948578, y: 23.497244}
-      - {x: -5.70364, y: 9.669771}
+    - - {x: 11.262604, y: 21.704233}
+      - {x: -5.213747, y: 21.701006}
+      - {x: -5.2954025, y: 9.669771}
       - {x: -5.3499756, y: 6.053008}
-      - {x: -5.277937, y: 4.006134}
-      - {x: 13.404198, y: 3.9356747}
+      - {x: -5.1146393, y: 6.210615}
+      - {x: 11.363014, y: 5.7319164}
   m_UseDelaunayMesh: 0
 --- !u!4 &2142478226
 Transform:

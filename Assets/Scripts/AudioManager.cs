@@ -111,9 +111,8 @@ public class AudioManager : MonoBehaviour
         volumeLevel = PlayerPrefs.GetFloat("Volume");
         foreach(var audio in gameObject.GetComponents<AudioSource>())
         {
-            var match = Regex.Match(audio.clip.name, "(engine)|(Race)|(Impact)", RegexOptions.IgnoreCase);
+            var match = Regex.Match(audio.clip.name, "(Engine)|(Race)|(Impact)", RegexOptions.IgnoreCase);
             var match2 = Regex.Match(audio.clip.name, "(Skid)", RegexOptions.IgnoreCase);
-            //Debug.Log(match.Success + " " + audio.clip.name);
             
             if (match.Success)
             {

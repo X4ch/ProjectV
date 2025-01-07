@@ -360,6 +360,7 @@ MonoBehaviour:
   pauseUI: {fileID: 53933413}
   pauseUIFirstButton: {fileID: 382499925}
   pauseTimeText: {fileID: 1067178477}
+  serialHandler: {fileID: 0}
 --- !u!4 &37522817
 Transform:
   m_ObjectHideFlags: 0
@@ -6639,7 +6640,7 @@ MonoBehaviour:
   engineTest: {fileID: 757015069}
   voidOut: {fileID: 757015059}
   brokenCrate: {fileID: 757015058}
-  teleport: {fileID: 0}
+  teleport: {fileID: 757015069}
   menuClick: {fileID: 757015057}
   audio3: {fileID: 757015056}
   audio2: {fileID: 757015055}

@@ -79,7 +79,7 @@ public class UIManager : MonoBehaviour
             speedText.text = string.Format("{0:00} km/h", Mathf.RoundToInt(Mathf.Abs(trackManager.GetCarVelocity() * 3.6f)));
             lapText.text = string.Format("{0}/{1}", trackManager.numberOfLapsCrossed + 1, trackManager.numberOfLapsTotal);
             if (serialHandler == null) return;
-            serialHandler.SetSpeed(Mathf.RoundToInt(Mathf.Abs(trackManager.GetCarVelocity() * 3.6f)));
+            //serialHandler.SetSpeed(Mathf.RoundToInt(Mathf.Abs(trackManager.GetCarVelocity() * 3.6f)));
         }
     }
 
@@ -93,7 +93,8 @@ public class UIManager : MonoBehaviour
         circle_3.GetComponent<UnityEngine.UI.Image>().color = redOn;
         //IOT :
         if (serialHandler == null) return;
-        serialHandler.SetRedLed(true);
+        //serialHandler.SetRedLed(true);
+        serialHandler.SendLEDCommand(1);
     }
     public void Light2()
     {
@@ -101,8 +102,10 @@ public class UIManager : MonoBehaviour
         circle_2.GetComponent<UnityEngine.UI.Image>().color = redOn;
         //IOT :
         if (serialHandler == null) return;
-        serialHandler.SetRedLed(false);
-        serialHandler.SetOrangeLed(true);
+        //serialHandler.SetRedLed(false);
+        //serialHandler.SetOrangeLed(true);
+        serialHandler.SendLEDCommand(0);
+        serialHandler.SendLEDCommand(3);
     }
     public void Light1()
     {
@@ -110,8 +113,10 @@ public class UIManager : MonoBehaviour
         circle_1.GetComponent<UnityEngine.UI.Image>().color = redOn;
         //IOT :
         if (serialHandler == null) return;
-        serialHandler.SetOrangeLed(false);
-        serialHandler.SetGreenLed(true);
+        //serialHandler.SetOrangeLed(false);
+        //serialHandler.SetGreenLed(true);
+        serialHandler.SendLEDCommand(2);
+        serialHandler.SendLEDCommand(5);
     }
 
     public void LightAll()
@@ -123,17 +128,25 @@ public class UIManager : MonoBehaviour
 
         //IOT :
         if (serialHandler == null) return;
-        serialHandler.SetOrangeLed(true);
-        serialHandler.SetRedLed(true);
+        //serialHandler.SetOrangeLed(true);
+        //serialHandler.SetRedLed(true);
+        serialHandler.SendLEDCommand(1);
+        serialHandler.SendLEDCommand(3);
+        serialHandler.SendLEDCommand(5);
+        
+        
     }
 
     public void UnlightAll()
     {
         //IOT :
         if (serialHandler == null) return;
-        serialHandler.SetGreenLed(false);
-        serialHandler.SetOrangeLed(false);
-        serialHandler.SetRedLed(false);
+        //serialHandler.SetGreenLed(false);
+        //serialHandler.SetOrangeLed(false);
+        //serialHandler.SetRedLed(false);
+        serialHandler.SendLEDCommand(0);
+        serialHandler.SendLEDCommand(2);
+        serialHandler.SendLEDCommand(4);
     }
 
     public void HideStartUI()
@@ -156,7 +169,11 @@ public class UIManager : MonoBehaviour
         endUI.SetActive(true);
 
         // IOT :
-        //UnlightAll();
+        for (int i = 0; i <2; i++)
+        {
+            LightAll();
+            UnlightAll();
+        }
 
         finalTimeText.text = string.Format("Time : " + DisplayTime(lapTimers.Sum()));
         for (int i = 0; i < lapTimers.Count; i++)

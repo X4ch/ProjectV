@@ -180,6 +180,7 @@ public class TrackManager : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         UIManager.Instance.DisplayCountdown("Go !");
+        UIManager.Instance.UnlightAll();
         UIManager.Instance.LightAll();
         UIManager.Instance.UnlightAll();
         StartGame();
@@ -200,8 +201,6 @@ public class TrackManager : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log("Car speed: " + car.GetComponent<CarController>().getVelocity());
-
         if (!isTrackRunning) return;
 
         trackTimer = Time.time - trackTimerStart;

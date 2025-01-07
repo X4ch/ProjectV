@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using System.IO.Ports;
 using UnityEngine;
 
@@ -27,72 +26,74 @@ public class SerialHandler : MonoBehaviour
         _serial.Open();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Return early if not open, prevent spamming errors for no reason.
-        if (!_serial.IsOpen) return;
-        // Prevent blocking if no message is available as we are not doing anything else
-        // Alternative solutions : set a timeout, read messages in another thread, coroutines, futures...
-        if (_serial.BytesToRead <= 0) return;
+        if (_serial.BytesToRead > 2)
+        { // Check if we have at least a header
+            byte[] header = new byte[2];
+            _serial.Read(header, 0, 2);
 
-        // Trim leading and trailing whitespaces, makes it easier to handle different line endings.
-        // Arduino uses \r\n by default with `.println()`.
-        var message = _serial.ReadLine().Trim();
+            byte type = header[0];
+            byte length = header[1];
 
-        // Split the message on spaces, in case we want to pass a value as well.
-        var messageParts = message.Split(' ');
-        switch (messageParts[0])
+            if (_serial.BytesToRead >= length)
+            { // Ensure full payload is available
+                byte[] payload = new byte[length];
+                _serial.Read(payload, 0, length);
+
+                HandleMessage(type, payload);
+            }
+        }
+    }
+
+    private void HandleMessage(byte type, byte[] payload)
+    {
+        switch (type)
         {
-            case "button":
-                Debug.Log("Button pressed");
+            case 1: // Joystick data
+                float x = BitConverter.ToSingle(payload, 0);
+                float y = BitConverter.ToSingle(payload, 4);
+                //Debug.Log($"Joystick: X={x}, Y={y}");
+                if (x > 0.1f || x < -0.1f || y > 0.1f || y < -0.1f)
+                    movingPlatform.Moving(x, y);
+                break;
+
+            case 2: // Button press
+                //Debug.Log("Button Pressed");
                 trackManager.Shockwave();
                 break;
-            case "x":
-                x = float.Parse(messageParts[1], CultureInfo.InvariantCulture);
-                if (x < 0.1f && x > -0.1f) x = 0;
-                break;
 
-            case "y":
-                y = float.Parse(messageParts[1], CultureInfo.InvariantCulture);
-                if (y < 0.1f && y > -0.1f) y = 0;
-                break;
             default:
-                // Debug.Log($"Unknown message: {message}");
+                //Debug.LogWarning($"Unknown message type: {type}");
                 break;
         }
-        movingPlatform.Moving(x/2, y/2);
     }
 
-    public void SetGreenLed(bool newState)
+    public void SendLEDCommand(int ledCommand)
     {
-        if (!_serial.IsOpen) return;
-        _serial.WriteLine(newState ? "GON" : "GOFF");
+        byte[] message = new byte[] { 3, 1, (byte)ledCommand }; // Type 3, length 1
+        _serial.Write(message, 0, message.Length);
     }
 
-    public void SetOrangeLed(bool newState)
+    public void SendSpeed(float speed)
     {
-        if (!_serial.IsOpen) return;
-        _serial.WriteLine(newState ? "OON" : "OOFF");
-    }
+        byte[] speedBytes = BitConverter.GetBytes((int)speed);
+        byte[] message = new byte[6]; // Header (2 bytes) + payload (4 bytes)
 
-    public void SetRedLed(bool newState)
-    {
-        if (!_serial.IsOpen) return;
-        _serial.WriteLine(newState ? "RON" : "ROFF");
-    }
+        message[0] = 4; // Type 4 for speed
+        message[1] = 4; // Length of the payload (4 bytes for a float)
 
-    public void SetSpeed(float speed)
-    {
-        if (!_serial.IsOpen) return;
-        string speedMessage = $"speed {speed:F2}\n";
-        _serial.Write(speedMessage);
+        Array.Copy(speedBytes, 0, message, 2, speedBytes.Length);
+
+        _serial.Write(message, 0, message.Length);
     }
 
 
     private void OnDestroy()
     {
-        if (!_serial.IsOpen) return;
-        _serial.Close();
+        if (_serial != null && _serial.IsOpen)
+        {
+            _serial.Close();
+        }
     }
 }
